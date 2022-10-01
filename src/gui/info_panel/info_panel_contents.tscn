@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/gui/info_panel_health_label.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_h_separator.tscn" type="PackedScene" id=3]
@@ -7,25 +7,6 @@
 [ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_xs.tres" type="DynamicFont" id=6]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.gd" type="Script" id=7]
 [ext_resource path="res://src/gui/info_panel/info_panel_contents.gd" type="Script" id=8]
-[ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_panel_container.tscn" type="PackedScene" id=9]
-[ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/scaffolder/src/gui/style_box_flat_scalable.gd" type="Script" id=11]
-
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 48.0
-content_margin_right = 48.0
-content_margin_top = 12.0
-content_margin_bottom = 12.0
-bg_color = Color( 1, 1, 1, 0 )
-script = ExtResource( 11 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 48.0
-content_margin_right = 48.0
-content_margin_top = 12.0
-content_margin_bottom = 12.0
-bg_color = Color( 1, 1, 1, 0 )
-script = ExtResource( 11 )
 
 [node name="InfoPanelContents" type="VBoxContainer"]
 margin_left = 2560.0
@@ -35,115 +16,8 @@ margin_bottom = 2031.0
 custom_constants/separation = 16
 script = ExtResource( 8 )
 
-[node name="ConnectionStatus" type="HBoxContainer" parent="."]
-margin_right = 1292.0
-margin_bottom = 47.0
-
-[node name="Spacer" parent="ConnectionStatus" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 23.0
-margin_right = 594.0
-margin_bottom = 23.0
-size_flags_horizontal = 3
-
-[node name="ScaffolderPanelContainer" parent="ConnectionStatus" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 598.0
-margin_right = 694.0
-margin_bottom = 47.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/panel = SubResource( 1 )
-is_unique = true
-content_margin_left_override = 48
-content_margin_top_override = 12
-content_margin_right_override = 48
-content_margin_bottom_override = 12
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ConnectionStatus/ScaffolderPanelContainer"]
-margin_left = 48.0
-margin_top = 12.0
-margin_right = 48.0
-margin_bottom = 35.0
-alignment = 1
-
-[node name="ScaffolderLabel" parent="ConnectionStatus/ScaffolderPanelContainer/HBoxContainer" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 0.0
-margin_bottom = 23.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
-font_size = "S"
-
-[node name="Spacer2" parent="ConnectionStatus" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 698.0
-margin_top = 23.0
-margin_right = 1292.0
-margin_bottom = 23.0
-size_flags_horizontal = 3
-
-[node name="BarrierActiveStatus" type="HBoxContainer" parent="."]
-margin_top = 63.0
-margin_right = 1292.0
-margin_bottom = 110.0
-
-[node name="Spacer" parent="BarrierActiveStatus" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 23.0
-margin_right = 594.0
-margin_bottom = 23.0
-size_flags_horizontal = 3
-
-[node name="ScaffolderPanelContainer" parent="BarrierActiveStatus" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 598.0
-margin_right = 694.0
-margin_bottom = 47.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-custom_styles/panel = SubResource( 2 )
-is_unique = true
-content_margin_left_override = 48
-content_margin_top_override = 12
-content_margin_right_override = 48
-content_margin_bottom_override = 12
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BarrierActiveStatus/ScaffolderPanelContainer"]
-margin_left = 48.0
-margin_top = 12.0
-margin_right = 48.0
-margin_bottom = 35.0
-alignment = 1
-
-[node name="ScaffolderLabel" parent="BarrierActiveStatus/ScaffolderPanelContainer/HBoxContainer" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 0.0
-margin_bottom = 23.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
-font_size = "S"
-
-[node name="Spacer2" parent="BarrierActiveStatus" instance=ExtResource( 10 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 698.0
-margin_top = 23.0
-margin_right = 1292.0
-margin_bottom = 23.0
-size_flags_horizontal = 3
-
 [node name="Status" type="HBoxContainer" parent="."]
-margin_top = 126.0
 margin_right = 1292.0
-margin_bottom = 126.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 alignment = 1
@@ -161,9 +35,9 @@ size_flags_vertical = 5
 script = ExtResource( 7 )
 
 [node name="Description" type="VBoxContainer" parent="."]
-margin_top = 142.0
+margin_top = 16.0
 margin_right = 1292.0
-margin_bottom = 142.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
 custom_constants/separation = 6
 
@@ -171,26 +45,26 @@ custom_constants/separation = 6
 modulate = Color( 0.231373, 0.231373, 0.321569, 1 )
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 158.0
+margin_top = 32.0
 margin_right = 1292.0
-margin_bottom = 162.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="CommandsLabel" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 178.0
+margin_top = 52.0
 margin_right = 1292.0
-margin_bottom = 201.0
+margin_bottom = 75.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "Commands"
 font_size = "S"
 
 [node name="Commands" type="VBoxContainer" parent="."]
-margin_top = 217.0
+margin_top = 91.0
 margin_right = 1292.0
-margin_bottom = 217.0
+margin_bottom = 91.0
 size_flags_horizontal = 3
 custom_constants/separation = 12
 
@@ -198,26 +72,26 @@ custom_constants/separation = 12
 modulate = Color( 0.231373, 0.231373, 0.321569, 1 )
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 233.0
+margin_top = 107.0
 margin_right = 1292.0
-margin_bottom = 237.0
+margin_bottom = 111.0
 size_flags_horizontal = 3
 
 [node name="UpgradesLabel" parent="." instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 253.0
+margin_top = 127.0
 margin_right = 1292.0
-margin_bottom = 276.0
+margin_bottom = 150.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "Upgrades"
 font_size = "S"
 
 [node name="Upgrades" type="VBoxContainer" parent="."]
-margin_top = 292.0
+margin_top = 166.0
 margin_right = 1292.0
-margin_bottom = 312.0
+margin_bottom = 186.0
 size_flags_horizontal = 3
 custom_constants/separation = 12
 

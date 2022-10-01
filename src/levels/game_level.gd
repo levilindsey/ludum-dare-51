@@ -45,26 +45,26 @@ const _EMPTY_STRUCTURE_SCENE := preload(
 #const _LARGE_FARM_SCENE := preload(
 #    "res://src/buildings/large_farm.tscn")
 const _SMALL_BASE_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _MEDIUM_BASE_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _LARGE_BASE_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _SMALL_TOWER_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _MEDIUM_TOWER_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _LARGE_TOWER_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _SMALL_FARM_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _MEDIUM_FARM_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 const _LARGE_FARM_SCENE := preload(
-    "res://src/buildings/base.tscn")
+    "res://src/buildings/small_base.tscn")
 
 var _static_camera: StaticCamera
-var _nav_preselection_camera: NavigationPreselectionCamera
+var _follow_camera: FollowCharacterCamera
 
 var hero: Hero
 var base: Base
@@ -87,6 +87,9 @@ var workers := []
 # Array<Enemy>
 var enemies := []
 
+# Dictionary<Worker, true>
+var idle_workers := {}
+
 # Array<Command>
 var command_queue := []
 
@@ -102,10 +105,15 @@ var previous_command_enablement := []
 var _is_money_based_command_enablement_update_pending := false
 var _is_try_next_command_pending := false
 
+var _max_command_cost := -INF
+
 
 func _ready() -> void:
     _static_camera = StaticCamera.new()
     add_child(_static_camera)
+    
+    for command in CommandType.VALUES:
+        _max_command_cost = max(_max_command_cost, CommandType.COSTS[command])
     
     command_enablement.resize(CommandType.VALUES.size())
     for command in CommandType.VALUES:
@@ -130,21 +138,21 @@ func _load() -> void:
 func _start() -> void:
     ._start()
     
-    _nav_preselection_camera = NavigationPreselectionCamera.new()
-    add_child(_nav_preselection_camera)
+    hero = Sc.utils.get_child_by_type(self, Hero)
     
-    _nav_preselection_camera.target_character = _active_player_character
-    swap_camera(_nav_preselection_camera, true)
+    _follow_camera = FollowCharacterCamera.new()
+    add_child(_follow_camera)
+    
+    _follow_camera.target_character = hero
+    swap_camera(_follow_camera, false)
     
     base = Sc.utils.get_child_by_type($Structures, Base)
     _on_building_created(base, true)
     
-    empty_structures = \
+    var empty_structures := \
         Sc.utils.get_children_by_type($Structures, EmptyStructure)
     for empty_structure in empty_structures:
         _on_building_created(empty_structure, true)
-    
-    hero = Sc.utils.get_child_by_type(self, Hero)
     
     base._on_level_started()
     hero._on_level_started()
@@ -231,23 +239,23 @@ func _on_radial_menu_closed() -> void:
     _update_camera()
 
 
-func _on_worker_selection_changed(
-        worker: Worker,
+func _on_friendly_selection_changed(
+        friendly: Friendly,
         is_selected: bool) -> void:
     if is_selected:
-        # Deselect any previously selected worker.
-        if is_instance_valid(selected_worker):
-            if worker == selected_worker:
+        # Deselect any previously selected friendly.
+        if is_instance_valid(selected_friendly):
+            if friendly == selected_friendly:
                 # No change.
                 return
             else:
-                selected_worker.set_is_selected(false)
-        _update_selected_bot(worker)
+                selected_friendly.set_is_selected(false)
+        _update_selected_friendly(friendly)
     else:
-        if worker != selected_worker:
+        if friendly != selected_friendly:
             # No change.
             return
-        _update_selected_worker(null)
+        _update_selected_friendly(null)
     
     # Deselect any selected building.
     if is_selected and \
@@ -274,27 +282,27 @@ func _on_building_selection_changed(
             return
         _update_selected_building(null)
     
-    # Deselect any selected bot.
+    # Deselect any selected worker.
     if is_selected and \
-            is_instance_valid(selected_bot):
-        selected_bot.set_is_selected(false)
-        _update_selected_bot(null)
+            is_instance_valid(selected_friendly):
+        selected_friendly.set_is_selected(false)
+        _update_selected_friendly(null)
 
 
 func _clear_selection() -> void:
-    if is_instance_valid(selected_bot):
-        selected_bot.set_is_selected(false)
-        _update_selected_bot(null)
+    if is_instance_valid(selected_friendly):
+        selected_friendly.set_is_selected(false)
+        _update_selected_friendly(null)
     if is_instance_valid(selected_building):
         selected_building.set_is_selected(false)
         _update_selected_building(null)
 
 
-func _update_selected_bot(selected_bot: Bot) -> void:
-    if self.selected_bot == selected_bot:
+func _update_selected_friendly(selected_friendly: Friendly) -> void:
+    if self.selected_friendly == selected_friendly:
         return
-    previous_selected_bot = self.selected_bot
-    self.selected_bot = selected_bot
+    previous_selected_friendly = self.selected_friendly
+    self.selected_friendly = selected_friendly
 
 
 func _update_selected_building(selected_building: Building) -> void:
@@ -307,10 +315,8 @@ func _update_selected_building(selected_building: Building) -> void:
 func _update_camera() -> void:
     var extra_zoom: float
     if Sc.gui.hud.get_is_radial_menu_open():
-        swap_camera(_static_camera, true)
-        extra_zoom = 1.0
+        extra_zoom = 1.3
     else:
-        swap_camera(_default_camera, true)
         extra_zoom = 1.0
     camera.transition_extra_zoom(extra_zoom)
 
@@ -380,13 +386,13 @@ func _get_is_command_still_valid(command: Command) -> bool:
 
 func cancel_command(
         command: Command,
-        already_canceled_bot := false) -> void:
+        already_canceled_worker := false) -> void:
     command_queue.erase(command)
     in_progress_commands.erase(command)
     if !already_canceled_worker and \
             is_instance_valid(command.worker):
         command.worker.clear_command_state()
-        on_bot_idleness_changed(command.worker)
+        on_worker_idleness_changed(command.worker)
         command.worker.stop_on_surface(true)
         return
 
@@ -468,8 +474,8 @@ func _check_for_command_enablement_changed() -> void:
 
 func _get_worker_for_command(command: Command) -> Worker:
     var closest_distance_squared := INF
-    var closest_workerf: Worker = null
-    for worker in idle_worker.keys():
+    var closest_worker: Worker = null
+    for worker in idle_workers.keys():
         if !is_instance_valid(worker):
             Sc.logger.warning(
                 "GameLevel.get_worker_for_command: " +
@@ -499,22 +505,24 @@ func on_worker_idleness_changed(worker: Worker) -> void:
 func add_worker(worker_type: int) -> Worker:
     var worker_scene: PackedScene
     match worker_type:
-        CommandType.FRIENDLY_SMALL_WORKER:
+        CommandType.SMALL_WORKER:
             worker_scene = _FRIENDLY_SMALL_WORKER_SCENE
-        CommandType.FRIENDLY_MEDIUM_WORKER:
+        CommandType.MEDIUM_WORKER:
             worker_scene = _FRIENDLY_MEDIUM_WORKER_SCENE
-        CommandType.FRIENDLY_LARGE_WORKER:
+        CommandType.LARGE_WORKER:
             worker_scene = _FRIENDLY_LARGE_WORKER_SCENE
         _:
             Sc.logger.error("GameLevel.add_worker")
             return null
     var worker: Worker = add_character(
             worker_scene,
-            command_center.position + Vector2(0, -4),
+            base.position + Vector2(0, -4),
             true,
             false,
             true)
     worker.worker_type = worker_type
+    
+    workers.push_back(worker)
     
     session.workers_built_count += 1
     _update_session_counts()
@@ -522,10 +530,10 @@ func add_worker(worker_type: int) -> Worker:
     return worker
 
 
-func remove_worker(worker: Bot) -> void:
+func remove_worker(worker: Worker) -> void:
     assert(workers.has(worker))
     
-    if selected_worker == worker:
+    if selected_friendly == worker:
         _clear_selection()
     
     workers.erase(worker)
@@ -542,6 +550,45 @@ func remove_worker(worker: Bot) -> void:
     
     _update_session_counts()
     remove_character(worker)
+
+
+func add_enemy(enemy_type: int) -> Enemy:
+    var enemy_scene: PackedScene
+    match enemy_type:
+        CommandType.SMALL_ENEMY:
+            enemy_scene = _SMALL_ENEMY_SCENE
+        CommandType.LARGE_ENEMY:
+            enemy_scene = _LARGE_ENEMY_SCENE
+        _:
+            Sc.logger.error("GameLevel.add_enemy")
+            return null
+    var enemy: Enemy = add_character(
+        enemy_scene,
+        base.position + Vector2(0, -4),
+        true,
+        false,
+        true)
+    enemy.enemy_type = enemy_type
+    
+    enemies.push_back(enemy)
+    
+    session.enemies_built_count += 1
+    _update_session_counts()
+    
+    return enemy
+
+
+func remove_enemy(enemy: Enemy) -> void:
+    assert(enemies.has(enemy))
+    
+    enemies.erase(enemy)
+    
+    _update_session_counts()
+    remove_character(enemy)
+
+
+func remove_hero(hero: Hero) -> void:
+    remove_character(hero)
 
 
 func replace_building(
@@ -605,7 +652,7 @@ func remove_building(building: Building) -> void:
 func _on_building_created(
         building: Building,
         is_default_building := false) -> void:
-    if !is_default_building and !(building is Emptybuilding):
+    if !is_default_building and !(building is EmptyStructure):
         session.buildings_built_count += 1
     buildings.push_back(building)
     if building is EmptyStructure:
@@ -626,7 +673,20 @@ func on_building_health_depleted(building: Building) -> void:
 func on_worker_health_depleted(worker: Worker) -> void:
     # FIXME: ------------------------ Play sound.
 #    Sc.annotators.add_transient(WorkerExplosionAnnotator.new(worker.position))
-    remove_bot(worker)
+    remove_worker(worker)
+
+
+func on_hero_health_depleted(hero: Hero) -> void:
+    # FIXME: ------------------------ Play sound.
+#    Sc.annotators.add_transient(WorkerExplosionAnnotator.new(worker.position))
+    remove_hero(hero)
+    quit(false, false)
+
+
+func on_enemy_health_depleted(enemy: Enemy) -> void:
+    # FIXME: ------------------------ Play sound.
+#    Sc.annotators.add_transient(WorkerExplosionAnnotator.new(worker.position))
+    remove_enemy(enemy)
 
 
 func _update_session_counts() -> void:

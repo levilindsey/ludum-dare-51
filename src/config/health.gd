@@ -11,6 +11,12 @@ const LARGE_WORKER := 3200
 const SMALL_ENEMY := 100
 const LARGE_ENEMY := 800
 
+const BUILDING_EMPTY := -1
+
+const SMALL_BASE := 4000
+const MEDIUM_BASE := 16000
+const LARGE_BASE := 64000
+
 const SMALL_TOWER := 2000
 const MEDIUM_TOWER := 8000
 const LARGE_TOWER := 32000
@@ -24,26 +30,36 @@ static func get_default_capacity(entity_command_type: int) -> int:
     match entity_command_type:
         CommandType.HERO:
             return HERO
-
+        
         CommandType.SMALL_WORKER:
             return SMALL_WORKER
         CommandType.MEDIUM_WORKER:
             return MEDIUM_WORKER
         CommandType.LARGE_WORKER:
             return LARGE_WORKER
-
+        
         CommandType.SMALL_ENEMY:
             return SMALL_ENEMY
         CommandType.LARGE_ENEMY:
             return LARGE_ENEMY
-
+        
+        CommandType.BUILDING_EMPTY:
+            return BUILDING_EMPTY
+        
+        CommandType.SMALL_BASE:
+            return SMALL_BASE
+        CommandType.MEDIUM_BASE:
+            return MEDIUM_BASE
+        CommandType.LARGE_BASE:
+            return LARGE_BASE
+        
         CommandType.SMALL_TOWER:
             return SMALL_TOWER
         CommandType.MEDIUM_TOWER:
             return MEDIUM_TOWER
         CommandType.LARGE_TOWER:
             return LARGE_TOWER
-
+        
         CommandType.SMALL_FARM:
             return SMALL_FARM
         CommandType.MEDIUM_FARM:

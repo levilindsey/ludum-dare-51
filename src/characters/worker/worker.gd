@@ -3,6 +3,9 @@ class_name Worker
 extends Friendly
 
 
+const ENTITY_COMMAND_TYPE := CommandType.SMALL_WORKER
+
+
 var worker_type: int
 
 var command: Command
@@ -13,7 +16,7 @@ var triggers_wander_when_landed := false
 var _stationary_frames_count_with_command_active := 0
 
 
-func _init(entity_command_type: int).(entity_command_type) -> void:
+func _init().(ENTITY_COMMAND_TYPE) -> void:
     pass
 
 
@@ -293,11 +296,11 @@ func _get_radial_menu_item_types() -> Array:
         CommandType.FRIENDLY_INFO,
     ]
     match worker_type:
-        CommandType.FRIENDLY_SMALL_WORKER:
+        CommandType.SMALL_WORKER:
             types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
-        CommandType.FRIENDLY_MEDIUM_WORKER:
+        CommandType.MEDIUM_WORKER:
             types.push_back(CommandType.FRIENDLY_MEDIUM_UPGRADE)
-        CommandType.FRIENDLY_LARGE_WORKER:
+        CommandType.LARGE_WORKER:
             pass
         _:
             Sc.logger.error("Worker._get_common_radial_menu_item_types")
@@ -340,9 +343,9 @@ func get_can_handle_command(type: int) -> bool:
         CommandType.BUILDING_STOP, \
         CommandType.BUILDING_INFO, \
         CommandType.HERO, \
-        CommandType.FRIENDLY_SMALL_WORKER, \
-        CommandType.FRIENDLY_MEDIUM_WORKER, \
-        CommandType.FRIENDLY_LARGE_WORKER, \
+        CommandType.SMALL_WORKER, \
+        CommandType.MEDIUM_WORKER, \
+        CommandType.LARGE_WORKER, \
         CommandType.SMALL_ENEMY, \
         CommandType.LARGE_ENEMY, \
         CommandType.SMALL_BASE, \

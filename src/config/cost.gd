@@ -27,3 +27,24 @@ const BUILDING_VACATE := 0
 const BUILDING_RECYCLE := 0
 const BUILDING_STOP := 0
 const BUILDING_INFO := 0
+
+const HERO := 0
+
+const SMALL_WORKER := 0
+const MEDIUM_WORKER := 0
+const LARGE_WORKER := 0
+
+const SMALL_ENEMY := 0
+const LARGE_ENEMY := 0
+
+const SMALL_BASE := 0
+const MEDIUM_BASE := 0
+const LARGE_BASE := 0
+
+const SMALL_TOWER := 0
+const MEDIUM_TOWER := 0
+const LARGE_TOWER := 0
+
+const SMALL_FARM := 0
+const MEDIUM_FARM := 0
+const LARGE_FARM := 0

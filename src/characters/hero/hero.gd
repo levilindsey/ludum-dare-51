@@ -3,6 +3,13 @@ class_name Hero
 extends Friendly
 
 
+const ENTITY_COMMAND_TYPE := CommandType.HERO
+
+
+func _init().(ENTITY_COMMAND_TYPE) -> void:
+    pass
+
+
 func _ready() -> void:
     is_initial_nav = false
     is_new = false

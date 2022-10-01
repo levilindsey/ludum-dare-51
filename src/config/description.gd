@@ -16,9 +16,9 @@ const LEVEL_FAILURE_EXPLANATION := "You let the monsters ravage your village!"
 const ENTITY_NAMES := {
     HERO = "Hero",
     
-    FRIENDLY_SMALL_WORKER = "Average worker",
-    FRIENDLY_MEDIUM_WORKER = "Strong worker",
-    FRIENDLY_LARGE_WORKER = "Mighty worker",
+    SMALL_WORKER = "Average worker",
+    MEDIUM_WORKER = "Strong worker",
+    LARGE_WORKER = "Mighty worker",
     
     SMALL_ENEMY = "Small enemy",
     LARGE_ENEMY = "Big enemy",
@@ -43,21 +43,21 @@ const ENTITY_DESCRIPTIONS := {
         "Can collect money.",
     ],
     
-    FRIENDLY_SMALL_WORKER = [
+    SMALL_WORKER = [
         "Minor productivity and strength.",
         "Can build and upgrade structures.",
         "Can occupy towers and farms.",
         "Can attack enemies.",
         "Can collect money.",
     ],
-    FRIENDLY_MEDIUM_WORKER = [
+    MEDIUM_WORKER = [
         "Moderate productivity and strength.",
         "Can build and upgrade structures.",
         "Can occupy towers and farms.",
         "Can attack enemies.",
         "Can collect money.",
     ],
-    FRIENDLY_LARGE_WORKER = [
+    LARGE_WORKER = [
         "Major productivity and strength.",
         "Can build and upgrade structures.",
         "Can occupy towers and farms.",
@@ -141,6 +141,18 @@ const COMMAND_LABELS := {
     BUILDING_RECYCLE = "Destroy",
     BUILDING_STOP = "Stop",
     BUILDING_INFO = "Info",
+    
+    SMALL_BASE = "Build sall base",
+    MEDIUM_BASE = "Build medium base",
+    LARGE_BASE = "Build large base",
+    
+    SMALL_TOWER = "Build small guard tower",
+    MEDIUM_TOWER = "Build medium guard tower",
+    LARGE_TOWER = "Build large guard tower",
+    
+    SMALL_FARM = "Build modest farm",
+    MEDIUM_FARM = "Build efficient farm",
+    LARGE_FARM = "Build super farm",
 }
 
 const COMMAND_DESCRIPTIONS := {
@@ -173,7 +185,7 @@ const COMMAND_DESCRIPTIONS := {
         "Builds a guard tower, which defends against monsters.",
     ],
     BUILDING_FARM = [
-        "Builds a guard tower, which grows cash crops.",
+        "Builds a farm, which grows cash crops.",
     ],
     BUILDING_BASE_UPGRADE = [
         "Upgrades your base. A better base allows better worker and structure upgrades.",
@@ -199,5 +211,33 @@ const COMMAND_DESCRIPTIONS := {
     ],
     BUILDING_INFO = [
         "Shows more information about this structure.",
+    ],
+    
+    SMALL_BASE = [
+        "Builds a small base.",
+    ],
+    MEDIUM_BASE = [
+        "Upgrades your base. A better base allows better worker and structure upgrades.",
+    ],
+    LARGE_BASE = [
+        "Upgrades your base. A better base allows better worker and structure upgrades.",
+    ],
+    SMALL_TOWER = [
+        "Builds a guard tower, which defends against monsters.",
+    ],
+    MEDIUM_TOWER = [
+        "Upgrades this guard tower. A better tower has more health and can shoot further.",
+    ],
+    LARGE_TOWER = [
+        "Upgrades this guard tower. A better tower has more health and can shoot further.",
+    ],
+    SMALL_FARM = [
+        "Builds a farm, which grows cash crops.",
+    ],
+    MEDIUM_FARM = [
+        "Upgrades this farm. A better farm yields more money from each harvest.",
+    ],
+    LARGE_FARM = [
+        "Upgrades this farm. A better farm yields more money from each harvest.",
     ],
 }

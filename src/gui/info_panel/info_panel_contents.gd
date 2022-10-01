@@ -6,11 +6,6 @@ extends VBoxContainer
 const _INFO_PANEL_COMMAND_ROW_SCENE := preload(
     "res://src/gui/info_panel/info_panel_command_row.tscn")
 
-var CONNECTION_STATUS_CONNECTED_COLOR := \
-    ColorFactory.opacify("connected_background", 0.3)
-var CONNECTION_STATUS_DISCONNECTED_COLOR := \
-    ColorFactory.opacify("disconnected_background", 0.3)
-
 var entity
 var entity_command_type := CommandType.UNKNOWN
 # Array<InfoPanelCommandRow>
@@ -58,9 +53,8 @@ func set_up(entity) -> void:
     # Render command rows.
     var commands: Array = entity._get_radial_menu_item_types()
     for command in commands:
-        if command == CommandType.STATION_INFO or \
-                command == CommandType.BOT_INFO or \
-                command == CommandType.BARRIER_INFO:
+        if command == CommandType.BUILDING_INFO or \
+                command == CommandType.FRIENDLY_INFO:
             continue
         var row: InfoPanelCommandRow = \
             Sc.utils.add_scene($Commands, _INFO_PANEL_COMMAND_ROW_SCENE)
@@ -70,47 +64,16 @@ func set_up(entity) -> void:
     $Status/HealthLabel.entity = entity
     $Status/HealthLabel.set_up()
     
-    var is_empty_station := entity_command_type == CommandType.STATION_EMPTY
-    $Status.visible = !is_empty_station
-    $UpgradesSeparator.visible = !is_empty_station
-    $UpgradesLabel.visible = !is_empty_station
-    $Upgrades.visible = !is_empty_station
+    var is_empty_building := entity_command_type == CommandType.BUILDING_EMPTY
+    $Status.visible = !is_empty_building
+    $UpgradesSeparator.visible = !is_empty_building
+    $UpgradesLabel.visible = !is_empty_building
+    $Upgrades.visible = !is_empty_building
     
     update()
 
 
 func update() -> void:
-    if entity is CommandCenter or \
-            entity is EmptyStation or \
-            entity is Bot or \
-            entity is BarrierPylon:
-        $ConnectionStatus.visible = false
-    elif entity is Station:
-        $ConnectionStatus.visible = true
-        $ConnectionStatus/ScaffolderPanelContainer.color_override = \
-            CONNECTION_STATUS_CONNECTED_COLOR if \
-            entity.is_connected_to_command_center else \
-            CONNECTION_STATUS_DISCONNECTED_COLOR
-        $ConnectionStatus/ScaffolderPanelContainer/HBoxContainer/ScaffolderLabel.text = \
-            Description.IS_CONNECTED if \
-            entity.is_connected_to_command_center else \
-            Description.IS_DISCONNECTED
-    else:
-        Sc.logger.error("InfoPanelContents.update")
-    
-    if entity is BarrierPylon:
-        $BarrierActiveStatus.visible = true
-        $BarrierActiveStatus/ScaffolderPanelContainer.color_override = \
-            CONNECTION_STATUS_CONNECTED_COLOR if \
-            entity.get_is_active() else \
-            CONNECTION_STATUS_DISCONNECTED_COLOR
-        $BarrierActiveStatus/ScaffolderPanelContainer/HBoxContainer/ScaffolderLabel.text = \
-            Description.BARRIER_IS_ACTIVE if \
-            entity.get_is_active() else \
-            Description.BARRIER_IS_INACTIVE
-    else:
-        $BarrierActiveStatus.visible = false
-    
     if entity.get_health_capacity() < 0:
         $Status.visible = false
     

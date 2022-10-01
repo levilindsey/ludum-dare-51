@@ -234,9 +234,9 @@ func _update_highlight() -> void:
         _MAX_HIGHLIGHT_OPACITY_FOR_VIEWPORT_POSITION
     if interaction_mode == InteractionMode.HOVER or \
             interaction_mode == InteractionMode.PRESSED:
-        outline_color = Sc.palette.get_color("station_hovered")
+        outline_color = Sc.palette.get_color("building_hovered")
     elif get_is_selected():
-        outline_color = Sc.palette.get_color("station_selected")
+        outline_color = Sc.palette.get_color("building_selected")
     else:
         outline_color = _get_normal_highlight_color()
         active_outline_alpha_multiplier = \
@@ -245,7 +245,7 @@ func _update_highlight() -> void:
 
 
 func _get_normal_highlight_color() -> Color:
-    return Sc.palette.get_color("station_normal")
+    return Sc.palette.get_color("building_normal")
 
 
 func _update_outline() -> void:

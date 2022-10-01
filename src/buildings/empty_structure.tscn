@@ -140,7 +140,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="EmptyStructure" type="Node2D"]
+[node name="EmptyStructure" type="Area2D"]
+collision_layer = 1073741825
+monitoring = false
+monitorable = false
 script = ExtResource( 1 )
 
 [node name="ShaderOutlineableAnimatedSprite" parent="." instance=ExtResource( 2 )]

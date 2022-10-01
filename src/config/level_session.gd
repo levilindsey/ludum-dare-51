@@ -11,10 +11,11 @@ var building_count := 0
 
 var worker_capacity := 10
 
-var total_mony := 0
+var total_money := 0
 var current_money := 0
 
 var workers_built_count := 0
+var enemies_built_count := 0
 var buildings_built_count := 0
 
 var projectiles_collided_count := 0
@@ -32,10 +33,11 @@ func reset(id: String) -> void:
 
     worker_capacity = 10
 
-    total_mony = 0
+    total_money = 0
     current_money = 0
 
     workers_built_count = 0
+    enemies_built_count = 0
     buildings_built_count = 0
     
     projectiles_collided_count = 0
