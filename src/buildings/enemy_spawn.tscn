@@ -145,6 +145,9 @@ collision_layer = 1073741825
 monitoring = false
 monitorable = false
 script = ExtResource( 3 )
+screen_radius = 30.0
+shape_rectangle_extents = Vector2( 46, 34 )
+shape_offset = Vector2( 0, -31 )
 
 [node name="ShaderOutlineableAnimatedSprite" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -44 )
@@ -154,4 +157,4 @@ __meta__ = {
 }
 
 [node name="Center" type="Position2D" parent="."]
-position = Vector2( 0, -72 )
+position = Vector2( 0, -31 )

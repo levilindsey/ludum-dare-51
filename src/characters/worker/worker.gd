@@ -5,7 +5,6 @@ extends Friendly
 
 const ENTITY_COMMAND_TYPE := CommandType.SMALL_WORKER
 
-
 var worker_type: int
 
 var command: Command
@@ -374,16 +373,6 @@ func _on_occupied_building() -> void:
 # FIXME: -----------------
 func _on_vacated_building() -> void:
     pass
-
-
-#func _on_started_colliding(
-#        target: Node2D,
-#        layer_names: Array) -> void:
-#    match layer_names[0]:
-#        "foo":
-#            pass
-#        _:
-#            Sc.logger.error()
 
 
 func _process_sounds() -> void:

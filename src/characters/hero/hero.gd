@@ -20,16 +20,6 @@ func _on_health_depleted() -> void:
     pass
 
 
-#func _on_started_colliding(
-#        target: Node2D,
-#        layer_names: Array) -> void:
-#    match layer_names[0]:
-#        "foo":
-#            pass
-#        _:
-#            Sc.logger.error()
-
-
 func _process_sounds() -> void:
     if just_triggered_jump:
         Sc.audio.play_sound("test_character_jump")

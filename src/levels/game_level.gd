@@ -63,6 +63,13 @@ const _MEDIUM_FARM_SCENE := preload(
 const _LARGE_FARM_SCENE := preload(
     "res://src/buildings/small_base.tscn")
 
+const _FRIENDLY_PROJECTILE_SCENE := preload(
+    "res://src/projectiles/friendly_projectile.tscn")
+const _SMALL_ENEMY_PROJECTILE_SCENE := preload(
+    "res://src/projectiles/small_enemy_projectile.tscn")
+const _LARGE_ENEMY_PROJECTILE_SCENE := preload(
+    "res://src/projectiles/large_enemy_projectile.tscn")
+
 var _static_camera: StaticCamera
 var _follow_camera: FollowCharacterCamera
 
@@ -75,17 +82,26 @@ var previous_selected_building: Building
 var selected_friendly: Friendly
 var previous_selected_friendly: Friendly
 
+var selected_enemy: Enemy
+var previous_selected_enemy: Enemy
+
 # Array<Building>
 var buildings := []
 
 # Array<EmptyStructure>
 var empty_structures := []
 
+# Array<EnemySpawn>
+var enemy_spawn_points := []
+
 # Array<Worker>
 var workers := []
 
 # Array<Enemy>
 var enemies := []
+
+# Array<Projectile>
+var projectiles := []
 
 # Dictionary<Worker, true>
 var idle_workers := {}
@@ -106,6 +122,10 @@ var _is_money_based_command_enablement_update_pending := false
 var _is_try_next_command_pending := false
 
 var _max_command_cost := -INF
+
+var worker_spawn_controller: WorkerSpawnController
+var enemy_spawn_controller: EnemySpawnController
+var projectile_controller: ProjectileController
 
 
 func _ready() -> void:
@@ -163,10 +183,19 @@ func _start() -> void:
     for empty_structure in empty_structures:
         _on_building_created(empty_structure, true)
     
+    var enemy_spawn_points := \
+        Sc.utils.get_children_by_type($Structures, EnemySpawn)
+    for enemy_spawn_point in enemy_spawn_points:
+        _on_building_created(enemy_spawn_point, true)
+    
+    session.total_enemy_spawn_point_count = enemy_spawn_points.size()
+    
     base._on_level_started()
     hero._on_level_started()
     for empty_structure in empty_structures:
         empty_structure._on_level_started()
+    for enemy_spawn_point in enemy_spawn_points:
+        enemy_spawn_point._on_level_started()
     
     update_command_enablement()
     
@@ -174,6 +203,15 @@ func _start() -> void:
     
     Sc.camera.connect("panned", self, "_on_panned")
     Sc.camera.connect("zoomed", self, "_on_zoomed")
+    
+    worker_spawn_controller = WorkerSpawnController.new()
+    add_child(worker_spawn_controller)
+    
+    enemy_spawn_controller = EnemySpawnController.new()
+    add_child(enemy_spawn_controller)
+    
+    projectile_controller = ProjectileController.new()
+    add_child(projectile_controller)
 
 
 func _destroy() -> void:
@@ -273,6 +311,31 @@ func _on_friendly_selection_changed(
         _update_selected_building(null)
 
 
+func _on_enemy_selection_changed(
+        enemy: Enemy,
+        is_selected: bool) -> void:
+    if is_selected:
+        # Deselect any previously selected enemy.
+        if is_instance_valid(selected_enemy):
+            if enemy == selected_enemy:
+                # No change.
+                return
+            else:
+                selected_enemy.set_is_selected(false)
+        _update_selected_enemy(enemy)
+    else:
+        if enemy != selected_enemy:
+            # No change.
+            return
+        _update_selected_enemy(null)
+    
+    # Deselect any selected building.
+    if is_selected and \
+            is_instance_valid(selected_building):
+        selected_building.set_is_selected(false)
+        _update_selected_building(null)
+
+
 func _on_building_selection_changed(
         building: Building,
         is_selected: bool) -> void:
@@ -291,17 +354,26 @@ func _on_building_selection_changed(
             return
         _update_selected_building(null)
     
-    # Deselect any selected worker.
+    # Deselect any selected friendly.
     if is_selected and \
             is_instance_valid(selected_friendly):
         selected_friendly.set_is_selected(false)
         _update_selected_friendly(null)
+    
+    # Deselect any selected enemy.
+    if is_selected and \
+            is_instance_valid(selected_enemy):
+        selected_enemy.set_is_selected(false)
+        _update_selected_enemy(null)
 
 
 func _clear_selection() -> void:
     if is_instance_valid(selected_friendly):
         selected_friendly.set_is_selected(false)
         _update_selected_friendly(null)
+    if is_instance_valid(selected_enemy):
+        selected_enemy.set_is_selected(false)
+        _update_selected_enemy(null)
     if is_instance_valid(selected_building):
         selected_building.set_is_selected(false)
         _update_selected_building(null)
@@ -312,6 +384,13 @@ func _update_selected_friendly(selected_friendly: Friendly) -> void:
         return
     previous_selected_friendly = self.selected_friendly
     self.selected_friendly = selected_friendly
+
+
+func _update_selected_enemy(selected_enemy: Enemy) -> void:
+    if self.selected_enemy == selected_enemy:
+        return
+    previous_selected_enemy = self.selected_enemy
+    self.selected_enemy = selected_enemy
 
 
 func _update_selected_building(selected_building: Building) -> void:
@@ -536,6 +615,8 @@ func add_worker(worker_type: int) -> Worker:
     session.workers_built_count += 1
     _update_session_counts()
     
+    worker_spawn_controller.on_worker_added(worker)
+    
     return worker
 
 
@@ -557,11 +638,16 @@ func remove_worker(worker: Worker) -> void:
     for command in commands_to_cancel:
         cancel_command(command)
     
+    worker_spawn_controller.on_worker_removed(worker)
+    
     _update_session_counts()
     remove_character(worker)
 
 
-func add_enemy(enemy_type: int) -> Enemy:
+func add_enemy(
+        enemy_type: int,
+        upgrade_type: int,
+        position: Vector2) -> Enemy:
     var enemy_scene: PackedScene
     match enemy_type:
         CommandType.ENEMY_SMALL:
@@ -573,16 +659,19 @@ func add_enemy(enemy_type: int) -> Enemy:
             return null
     var enemy: Enemy = add_character(
         enemy_scene,
-        base.position + Vector2(0, -4),
+        position,
         true,
         false,
-        true)
-    enemy.enemy_type = enemy_type
+        false)
+    enemy.set_upgrade_type(upgrade_type)
+    add_child(enemy)
     
     enemies.push_back(enemy)
     
     session.enemies_built_count += 1
     _update_session_counts()
+    
+    enemy_spawn_controller.on_enemy_added(enemy)
     
     return enemy
 
@@ -590,10 +679,53 @@ func add_enemy(enemy_type: int) -> Enemy:
 func remove_enemy(enemy: Enemy) -> void:
     assert(enemies.has(enemy))
     
+    if selected_enemy == enemy:
+        _clear_selection()
+    
     enemies.erase(enemy)
+    
+    enemy_spawn_controller.on_enemy_removed(enemy)
     
     _update_session_counts()
     remove_character(enemy)
+
+
+func add_projectile(
+        projectile_type: int,
+        position: Vector2,
+        velocity: Vector2) -> Projectile:
+    var projectile_scene: PackedScene
+    match projectile_type:
+        Projectile.FRIENDLY:
+            projectile_scene = _FRIENDLY_PROJECTILE_SCENE
+        Projectile.SMALL_ENEMY:
+            projectile_scene = _SMALL_ENEMY_PROJECTILE_SCENE
+        Projectile.LARGE_ENEMY:
+            projectile_scene = _LARGE_ENEMY_PROJECTILE_SCENE
+        _:
+            Sc.logger.error("GameLevel.add_projectile")
+            return null
+    
+    var projectile: Projectile = projectile_scene.instance()
+    projectile.position = position
+    projectile.velocity = velocity
+    
+    projectiles.push_back(projectile)
+    
+    session.projectiles_built_count += 1
+    _update_session_counts()
+    
+    projectile_controller.on_projectile_added(projectile)
+    
+    return projectile
+
+
+func remove_projectile(projectile: Projectile) -> void:
+    assert(projectiles.has(projectile))
+    projectiles.erase(projectile)
+    projectile_controller.on_projectile_removed(projectile)
+    _update_session_counts()
+    projectile._destroy()
 
 
 func remove_hero(hero: Hero) -> void:
@@ -644,6 +776,9 @@ func remove_building(building: Building) -> void:
     if building is EmptyStructure:
         assert(empty_structures.has(building))
         empty_structures.erase(building)
+    if building is EnemySpawn:
+        assert(enemy_spawn_points.has(building))
+        enemy_spawn_points.erase(building)
     
     var commands_to_cancel := []
     for collection in [command_queue, in_progress_commands]:
@@ -666,6 +801,8 @@ func _on_building_created(
     buildings.push_back(building)
     if building is EmptyStructure:
         empty_structures.push_back(building)
+    if building is EnemySpawn:
+        enemy_spawn_points.push_back(building)
     _update_session_counts()
 
 
@@ -701,7 +838,9 @@ func on_enemy_health_depleted(enemy: Enemy) -> void:
 func _update_session_counts() -> void:
     session.worker_count = workers.size()
     session.enemy_count = enemies.size()
-    session.building_count = buildings.size() - empty_structures.size()
+    session.building_count = \
+        buildings.size() - empty_structures.size() - enemy_spawn_points.size()
+    session.current_enemy_spawn_point_count = enemy_spawn_points.size()
     
     update_command_enablement()
 

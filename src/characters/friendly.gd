@@ -262,11 +262,6 @@ func _on_radial_menu_item_selected(item: RadialMenuItem) -> void:
         CommandType.FRIENDLY_INFO:
             set_is_selected(true)
             update_info_panel_visibility(true)
-            if behavior is StaticBehavior:
-                var wander_behavior: WanderBehavior = \
-                    get_behavior(WanderBehavior)
-                if is_instance_valid(wander_behavior):
-                    wander_behavior.trigger(false)
         _:
             Sc.logger.error("Friendly._on_radial_menu_item_selected")
 
@@ -288,9 +283,9 @@ func _process_sounds() -> void:
         Sc.audio.play_sound("jump")
     
     if surface_state.just_left_air:
-        Sc.audio.play_sound("friendly_land")
+        Sc.audio.play_sound("test_character_land")
     elif surface_state.just_touched_surface:
-            Sc.audio.play_sound("friendly_land")
+            Sc.audio.play_sound("test_character_land")
 
 
 func _get_radial_menu_item_types() -> Array:

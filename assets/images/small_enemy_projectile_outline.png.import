@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/empty_building_outlined.png-3c3cbb46b3e2d310cf3b482b65ae4c46.stex"
+path="res://.import/small_enemy_projectile_outline.png-1ae98eda2e33790f4e2f1a37c5a4eab5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/empty_building_outlined.png"
-dest_files=[ "res://.import/empty_building_outlined.png-3c3cbb46b3e2d310cf3b482b65ae4c46.stex" ]
+source_file="res://assets/images/small_enemy_projectile_outline.png"
+dest_files=[ "res://.import/small_enemy_projectile_outline.png-1ae98eda2e33790f4e2f1a37c5a4eab5.stex" ]
 
 [params]
 

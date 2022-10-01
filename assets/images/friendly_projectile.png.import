@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/base_outlined.png-c00f8835c8c436596680d3434cb7dd4c.stex"
+path="res://.import/friendly_projectile.png-9e0d2d709ac5a11d850211909b9eed54.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/base_outlined.png"
-dest_files=[ "res://.import/base_outlined.png-c00f8835c8c436596680d3434cb7dd4c.stex" ]
+source_file="res://assets/images/friendly_projectile.png"
+dest_files=[ "res://.import/friendly_projectile.png-9e0d2d709ac5a11d850211909b9eed54.stex" ]
 
 [params]
 

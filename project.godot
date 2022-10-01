@@ -394,6 +394,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/control_row.gd"
 }, {
+"base": "ScaffolderPanelContainer",
+"class": "CooldownIndicator",
+"language": "GDScript",
+"path": "res://src/gui/cooldown_indicator.gd"
+}, {
 "base": "Reference",
 "class": "CornerConnectionWeightMultipliers",
 "language": "GDScript",
@@ -728,6 +733,11 @@ _global_script_classes=[ {
 "class": "EnemySpawn",
 "language": "GDScript",
 "path": "res://src/buildings/enemy_spawn.gd"
+}, {
+"base": "Node2D",
+"class": "EnemySpawnController",
+"language": "GDScript",
+"path": "res://src/enemy_spawn_controller.gd"
 }, {
 "base": "TransientAnnotator",
 "class": "ExclamationMarkAnnotator",
@@ -1269,7 +1279,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/control_row_list.gd"
 }, {
-"base": "SurfacerCharacter",
+"base": "Enemy",
 "class": "LargeEnemy",
 "language": "GDScript",
 "path": "res://src/characters/large_enemy/large_enemy.gd"
@@ -1730,6 +1740,16 @@ _global_script_classes=[ {
 "path": "res://addons/surfacer/src/gui/platform_graph_inspector/inspector_item_controllers/profiler_group/profiler_timing_item_controller.gd"
 }, {
 "base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://src/projectiles/projectile.gd"
+}, {
+"base": "Node2D",
+"class": "ProjectileController",
+"language": "GDScript",
+"path": "res://src/projectile_controller.gd"
+}, {
+"base": "Node2D",
 "class": "ProximityDetector",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/character/proximity_detector.gd"
@@ -2174,7 +2194,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/buildings/small_base.gd"
 }, {
-"base": "SurfacerCharacter",
+"base": "Enemy",
 "class": "SmallEnemy",
 "language": "GDScript",
 "path": "res://src/characters/small_enemy/small_enemy.gd"
@@ -2769,6 +2789,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/addons/crypto_uuid_v4/uuid.gd"
 }, {
+"base": "Reference",
+"class": "UpgradeType",
+"language": "GDScript",
+"path": "res://src/config/upgrade_type.gd"
+}, {
 "base": "Node",
 "class": "Utils",
 "language": "GDScript",
@@ -2879,6 +2904,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/characters/worker/worker.gd"
 }, {
+"base": "Node2D",
+"class": "WorkerSpawnController",
+"language": "GDScript",
+"path": "res://src/worker_spawn_controller.gd"
+}, {
 "base": "Reference",
 "class": "_Debouncer",
 "language": "GDScript",
@@ -2982,6 +3012,7 @@ _global_script_class_icons={
 "ConnectionDirection": "",
 "ContinuousEdgeTrajectoryLegendItem": "",
 "ControlRow": "",
+"CooldownIndicator": "",
 "CornerConnectionWeightMultipliers": "",
 "CornerDirection": "",
 "CornerMatchInnerTilemap": "",
@@ -3049,6 +3080,7 @@ _global_script_class_icons={
 "EmptyStructure": "",
 "Enemy": "",
 "EnemySpawn": "",
+"EnemySpawnController": "",
 "ExclamationMarkAnnotator": "",
 "FailedEdgeAttempt": "",
 "FailedEdgeAttemptAnnotationElement": "",
@@ -3249,6 +3281,8 @@ _global_script_class_icons={
 "ProfilerCountItemController": "",
 "ProfilerGroupItemController": "",
 "ProfilerTimingItemController": "",
+"Projectile": "",
+"ProjectileController": "",
 "ProximityDetector": "res://addons/scaffolder/assets/images/editor_icons/proximity_detector.png",
 "QuadrantShapeType": "",
 "RadialMenu": "",
@@ -3457,6 +3491,7 @@ _global_script_class_icons={
 "TransientAnnotator": "",
 "TransientAnnotatorRegistry": "",
 "UUID": "",
+"UpgradeType": "",
 "Utils": "",
 "ValidEdgeItemController": "",
 "ValidEdgeTrajectoryLegendItem": "",
@@ -3479,6 +3514,7 @@ _global_script_class_icons={
 "WelcomePanel": "",
 "WelcomePanelControlRow": "",
 "Worker": "",
+"WorkerSpawnController": "",
 "_Debouncer": "",
 "_Interval": "",
 "_Throttler": "",

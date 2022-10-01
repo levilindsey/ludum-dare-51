@@ -3,10 +3,17 @@ class_name GameInterface
 extends SurfacerFrameworkGlobal
 
 
+const COOLDOWN_TIME := 10.0
+
 const _SCHEMA_PATH := "res://src/config/game_schema.gd"
 
 const INFO_PANEL_CONTENTS_SCENE := preload(
     "res://src/gui/info_panel/info_panel_contents.tscn")
+
+var scaled_play_time := 0.0
+var cooldown_count := 0
+var cooldown_time := 0.0
+var cooldown_ratio := 0.0
 
 
 func _init().(_SCHEMA_PATH) -> void:
@@ -79,7 +86,7 @@ func _get_manifest_overrides() -> Array:
             Sc.manifest.character_manifest.omits_npcs and debug],
         
         ["Su.manifest.precompute_platform_graph_for_levels", [
-#            "0",
+            "0",
         ]],
         ["Su.manifest.ignores_platform_graph_save_files", false],
         
@@ -97,3 +104,15 @@ func _get_manifest_overrides() -> Array:
     ])
     
     return overrides
+
+
+func _physics_process(_delta: float) -> void:
+    if Engine.editor_hint:
+        return
+    if !is_initialized:
+        return
+    
+    scaled_play_time = Sc.time.get_scaled_play_time()
+    cooldown_count = int(scaled_play_time / COOLDOWN_TIME)
+    cooldown_time = fmod(scaled_play_time, COOLDOWN_TIME)
+    cooldown_ratio = cooldown_time / COOLDOWN_TIME

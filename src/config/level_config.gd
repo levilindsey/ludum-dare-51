@@ -17,7 +17,9 @@ var level_manifest := {
         scene_path = LEVELS_PATH_PREFIX + "level0.tscn",
         platform_graph_character_category_names = [
             "hero",
-            "workers",
+            "small_enemy",
+            "large_enemy",
+            "worker",
         ],
         cell_size = Vector2(32.0, 32.0),
     },
