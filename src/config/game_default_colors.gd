@@ -108,7 +108,6 @@ var friendly_idle := ColorFactory.opacify("highlight_yellow_idle_selected", 0.6)
 var friendly_active := ColorFactory.opacify("highlight_teal", 0.4)
 var friendly_new := ColorFactory.opacify("highlight_yellow_new_selected", 0.9)
 var friendly_selected := ColorFactory.opacify("highlight_blue_selected", 0.9)
-var friendly_player_control_active := ColorFactory.opacify("highlight_purple", 0.9)
 var friendly_hovered := ColorFactory.opacify("highlight_light_blue_selected", 0.9)
 
 var building_normal := ColorFactory.opacify("highlight_teal", 0.65)

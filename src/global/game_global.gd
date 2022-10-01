@@ -5,6 +5,9 @@ extends SurfacerFrameworkGlobal
 
 const _SCHEMA_PATH := "res://src/config/game_schema.gd"
 
+const INFO_PANEL_CONTENTS_SCENE := preload(
+    "res://src/gui/info_panel/info_panel_contents.tscn")
+
 
 func _init().(_SCHEMA_PATH) -> void:
     pass
@@ -43,6 +46,8 @@ func _get_manifest_overrides() -> Array:
     var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.default
 #    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.full_screen
 #    var debug_window_size = ScaffolderGuiConfig.SCREEN_RESOLUTIONS.google_ads_portrait
+    
+    var moves_debug_game_window_to_other_monitor := false
     
     var overrides := []
     Sc.utils.concat(overrides, _get_common_overrides_for_release_mode())
@@ -85,6 +90,8 @@ func _get_manifest_overrides() -> Array:
             is_using_threads],
         
         ["Sc.manifest.gui_manifest.debug_window_size", debug_window_size],
+        ["Sc.manifest.gui_manifest.moves_debug_game_window_to_other_monitor",
+            moves_debug_game_window_to_other_monitor],
         ["Sc.manifest.gui_manifest.hud_manifest.is_inspector_enabled_default", true],
         ["Sc.manifest.gui_manifest.hud_manifest.is_hud_visible_by_default", true],
     ])

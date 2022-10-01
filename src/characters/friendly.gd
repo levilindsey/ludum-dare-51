@@ -177,9 +177,7 @@ func update_info_panel_visibility(is_visible: bool) -> void:
 
 func _update_status() -> void:
     var previous_status := status
-    if _get_is_player_control_active():
-        status = FriendlyStatus.PLAYER_CONTROL_ACTIVE
-    elif is_hovered:
+    if is_hovered:
         status = FriendlyStatus.HOVERED
     elif is_selected:
         status = FriendlyStatus.SELECTED
@@ -257,16 +255,17 @@ func _on_radial_menu_item_selected(item: RadialMenuItem) -> void:
     match item.id:
         CommandType.FRIENDLY_INFO:
             set_is_selected(true)
-            set_is_player_control_active(false)
             update_info_panel_visibility(true)
             if behavior is StaticBehavior:
-                get_behavior(WanderBehavior).trigger(false)
+                var wander_behavior: WanderBehavior = \
+                    get_behavior(WanderBehavior)
+                if is_instance_valid(wander_behavior):
+                    wander_behavior.trigger(false)
         _:
             Sc.logger.error("Friendly._on_radial_menu_item_selected")
 
 
 func _on_radial_menu_touch_up_center() -> void:
-#    set_is_player_control_active(true)
     _on_radial_menu_touch_up_outside()
 
 

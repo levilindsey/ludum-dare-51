@@ -7,7 +7,6 @@ enum {
     NEW,
     ACTIVE,
     IDLE,
-    PLAYER_CONTROL_ACTIVE,
     SELECTED,
     HOVERED,
     STOPPING,
@@ -30,12 +29,6 @@ const HIGHLIGHT_CONFIGS := {
         color = "friendly_idle",
         scale = 0.1,
         energy = 0.8,
-        outline_alpha_multiplier = 0.99,
-    },
-    PLAYER_CONTROL_ACTIVE: {
-        color = "friendly_player_control_active",
-        scale = 0.1,
-        energy = 1.1,
         outline_alpha_multiplier = 0.99,
     },
     SELECTED: {
@@ -63,8 +56,6 @@ static func get_string(type: int) -> String:
             return "ACTIVE"
         IDLE:
             return "IDLE"
-        PLAYER_CONTROL_ACTIVE:
-            return "PLAYER_CONTROL_ACTIVE"
         SELECTED:
             return "SELECTED"
         HOVERED:

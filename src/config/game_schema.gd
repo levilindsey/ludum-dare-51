@@ -339,6 +339,23 @@ var _gui_manifest := {
         is_inspector_enabled_default = false,
         inspector_panel_starts_open = false,
         is_key_value_list_consolidated = true,
+        
+        radial_menu_class = GameRadialMenu,
+        radial_menu_label_scene = preload(
+            "res://src/gui/radial_menu/game_radial_menu_label.tscn"),
+        radial_menu_item_hovered_scale = 2.0,
+        radial_menu_radius = 96.0,
+        radial_menu_item_radius = 30.0,
+        radial_menu_open_duration = 0.25,
+        radial_menu_close_duration = 0.25,
+        radial_menu_item_hover_duration = 0.2,
+        radial_menu_closed_item_angular_offset = -PI / 3,
+        radial_menu_item_normal_color_modulate = \
+            ColorFactory.palette("modulation_button_normal"),
+        radial_menu_item_hover_color_modulate = \
+            ColorFactory.palette("modulation_button_hover"),
+        radial_menu_item_disabled_color_modulate = \
+            ColorFactory.palette("modulation_button_disabled"),
     },
     welcome_panel_manifest = {
         # FIXME: -------------
@@ -679,6 +696,7 @@ var _additive_overrides := {
     },
     SurfacerSchema: {
         movement_manifest = {
+            uses_point_and_click_navigation = false,
             do_player_actions_interrupt_navigation = true,
         },
         cancel_active_player_control_on_invalid_nav_selection = true,

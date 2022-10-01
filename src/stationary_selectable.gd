@@ -332,9 +332,6 @@ func _on_touch_down(
         is_already_handled: bool) -> void:
     set_is_selected(true)
     
-    if is_instance_valid(Sc.level.selected_bot):
-        Sc.level.selected_bot.set_is_player_control_active(false)
-    
     open_radial_menu()
 
 
