@@ -109,6 +109,9 @@ var _max_command_cost := -INF
 
 
 func _ready() -> void:
+    if Engine.editor_hint:
+        return
+    
     _static_camera = StaticCamera.new()
     add_child(_static_camera)
     
@@ -124,19 +127,25 @@ func _ready() -> void:
 func _load() -> void:
     ._load()
     
+    if Engine.editor_hint:
+        return
+    
     Sc.gui.hud.set_up()
     Sc.gui.hud.connect(
-            "radial_menu_opened",
-            self,
-            "_on_radial_menu_opened")
+        "radial_menu_opened",
+        self,
+        "_on_radial_menu_opened")
     Sc.gui.hud.connect(
-            "radial_menu_closed",
-            self,
-            "_on_radial_menu_closed")
+        "radial_menu_closed",
+        self,
+        "_on_radial_menu_closed")
 
 
 func _start() -> void:
     ._start()
+    
+    if Engine.editor_hint:
+        return
     
     hero = Sc.utils.get_child_by_type(self, Hero)
     

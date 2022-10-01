@@ -702,7 +702,7 @@ var _additive_overrides := {
         cancel_active_player_control_on_invalid_nav_selection = true,
     },
     SurfaceTilerSchema: {
-        includes_intra_subtile_45_concave_cusps = false,
+        includes_intra_subtile_45_concave_cusps = true,
         tilesets = [
             {
                 recalculate_tileset = [TYPE_CUSTOM, RecalculateTilesetCustomProperty],

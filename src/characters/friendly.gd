@@ -33,6 +33,9 @@ var viewport_position_outline_alpha_multiplier := 0.0
 func _init(entity_command_type: int) -> void:
     self.entity_command_type = entity_command_type
     
+    if Engine.editor_hint:
+        return
+    
     _health_capacity = _get_health_capacity()
     _health = _health_capacity
     
@@ -50,6 +53,9 @@ func _init(entity_command_type: int) -> void:
 
 
 func _ready() -> void:
+    if Engine.editor_hint:
+        return
+    
     for light in Sc.utils.get_children_by_type(self, Light2D):
         if light != self.light:
             remove_child(light)
