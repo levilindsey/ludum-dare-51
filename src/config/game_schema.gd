@@ -358,15 +358,17 @@ var _gui_manifest := {
 }
 
 var _character_scenes := [
-    preload("res://src/characters/test_character/test_character.tscn"),
-    preload("res://src/characters/test_character2/test_character2.tscn"),
+    preload("res://src/characters/hero/hero.tscn"),
+    preload("res://src/characters/large_enemy/large_enemy.tscn"),
+    preload("res://src/characters/small_enemy/small_enemy.tscn"),
+    preload("res://src/characters/worker/worker.tscn"),
 ]
 
 var _character_categories := [
 ]
 
 var _character_manifest := {
-    default_player_character_name = "test_character",
+    default_player_character_name = "hero",
     character_scenes = _character_scenes,
     character_categories = _character_categories,
     omits_npcs = false,

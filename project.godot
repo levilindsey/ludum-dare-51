@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/utils/audio.gd"
 }, {
+"base": "Building",
+"class": "Base",
+"language": "GDScript",
+"path": "res://src/buildings/base.gd"
+}, {
 "base": "Node",
 "class": "BeatTracker",
 "language": "GDScript",
@@ -88,6 +93,21 @@ _global_script_classes=[ {
 "class": "BehaviorMoveResult",
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/behaviors/behavior_move_result.gd"
+}, {
+"base": "StationarySelectable",
+"class": "Building",
+"language": "GDScript",
+"path": "res://src/buildings/building.gd"
+}, {
+"base": "Node2D",
+"class": "BuildingExplosion",
+"language": "GDScript",
+"path": "res://src/buildings/building_explosion.gd"
+}, {
+"base": "TransientAnnotator",
+"class": "BuildingExplosionAnnotator",
+"language": "GDScript",
+"path": "res://src/buildings/building_explosion_annotator.gd"
 }, {
 "base": "CheckboxControlRow",
 "class": "ButtonControlsControlRow",
@@ -339,6 +359,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/config/color_config/color_palette.gd"
 }, {
+"base": "Reference",
+"class": "Command",
+"language": "GDScript",
+"path": "res://src/characters/command.gd"
+}, {
+"base": "Reference",
+"class": "CommandType",
+"language": "GDScript",
+"path": "res://src/config/command_type.gd"
+}, {
 "base": "Screen",
 "class": "ConfirmDataDeletionScreenLocal",
 "language": "GDScript",
@@ -409,6 +439,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surface_tiler/src/calculators/corner_match_tileset_shape_calculator.gd"
 }, {
+"base": "Reference",
+"class": "Cost",
+"language": "GDScript",
+"path": "res://src/config/cost.gd"
+}, {
+"base": "HBoxContainer",
+"class": "CostLabel",
+"language": "GDScript",
+"path": "res://src/gui/cost_label.gd"
+}, {
 "base": "Node",
 "class": "CrashReporter",
 "language": "GDScript",
@@ -448,6 +488,11 @@ _global_script_classes=[ {
 "class": "DebugTimeDisplayControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/debug_time_display_control_row.gd"
+}, {
+"base": "Reference",
+"class": "Description",
+"language": "GDScript",
+"path": "res://src/config/description.gd"
 }, {
 "base": "InspectorItemController",
 "class": "DescriptionItemController",
@@ -669,6 +714,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/annotators/element_annotator.gd"
 }, {
+"base": "Building",
+"class": "EmptyStructure",
+"language": "GDScript",
+"path": "res://src/buildings/empty_structure.gd"
+}, {
+"base": "SurfacerCharacter",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://src/characters/enemy.gd"
+}, {
 "base": "TransientAnnotator",
 "class": "ExclamationMarkAnnotator",
 "language": "GDScript",
@@ -869,6 +924,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/addons/plugger/src/framework_schema_modes.gd"
 }, {
+"base": "SurfacerCharacter",
+"class": "Friendly",
+"language": "GDScript",
+"path": "res://src/characters/friendly.gd"
+}, {
+"base": "Reference",
+"class": "FriendlyStatus",
+"language": "GDScript",
+"path": "res://src/characters/friendly_status.gd"
+}, {
 "base": "EdgeCalculator",
 "class": "FromAirCalculator",
 "language": "GDScript",
@@ -924,6 +989,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/game/src/plugin/game_plugin.gd"
 }, {
+"base": "RadialMenu",
+"class": "GameRadialMenu",
+"language": "GDScript",
+"path": "res://src/gui/radial_menu/game_radial_menu.gd"
+}, {
+"base": "SpriteModulationRadialMenuItem",
+"class": "GameRadialMenuItem",
+"language": "GDScript",
+"path": "res://src/gui/radial_menu/game_radial_menu_item.gd"
+}, {
+"base": "RadialMenuLabel",
+"class": "GameRadialMenuLabel",
+"language": "GDScript",
+"path": "res://src/gui/radial_menu/game_radial_menu_label.gd"
+}, {
 "base": "FrameworkSchema",
 "class": "GameSchema",
 "language": "GDScript",
@@ -968,6 +1048,21 @@ _global_script_classes=[ {
 "class": "HeaderControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/header_control_row.gd"
+}, {
+"base": "Reference",
+"class": "Health",
+"language": "GDScript",
+"path": "res://src/config/health.gd"
+}, {
+"base": "StatusBar",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://src/gui/health_bar.gd"
+}, {
+"base": "Friendly",
+"class": "Hero",
+"language": "GDScript",
+"path": "res://src/characters/hero/hero.gd"
 }, {
 "base": "TextControlRow",
 "class": "HighScoreControlRow",
@@ -1019,6 +1114,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/info_panel/info_panel.gd"
 }, {
+"base": "VBoxContainer",
+"class": "InfoPanelCommandRow",
+"language": "GDScript",
+"path": "res://src/gui/info_panel/info_panel_command_row.gd"
+}, {
+"base": "VBoxContainer",
+"class": "InfoPanelContents",
+"language": "GDScript",
+"path": "res://src/gui/info_panel/info_panel_contents.gd"
+}, {
 "base": "Node",
 "class": "InfoPanelController",
 "language": "GDScript",
@@ -1028,6 +1133,11 @@ _global_script_classes=[ {
 "class": "InfoPanelData",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/info_panel/info_panel_data.gd"
+}, {
+"base": "Control",
+"class": "InfoPanelHealthLabel",
+"language": "GDScript",
+"path": "res://src/gui/info_panel_health_label.gd"
 }, {
 "base": "CheckboxControlRow",
 "class": "InspectorEnabledControlRow",
@@ -1148,6 +1258,11 @@ _global_script_classes=[ {
 "class": "LabeledControlList",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/control_row_list.gd"
+}, {
+"base": "SurfacerCharacter",
+"class": "LargeEnemy",
+"language": "GDScript",
+"path": "res://src/characters/large_enemy/large_enemy.gd"
 }, {
 "base": "Screen",
 "class": "LdLoadingScreen",
@@ -2044,6 +2159,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/utils/time/slow_motion_music.gd"
 }, {
+"base": "SurfacerCharacter",
+"class": "SmallEnemy",
+"language": "GDScript",
+"path": "res://src/characters/small_enemy/small_enemy.gd"
+}, {
 "base": "CheckboxControlRow",
 "class": "SoundEffectsControlRow",
 "language": "GDScript",
@@ -2173,6 +2293,21 @@ _global_script_classes=[ {
 "class": "StaticTextControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_row_list/static_text_control_row.gd"
+}, {
+"base": "ShapedLevelControl",
+"class": "StationarySelectable",
+"language": "GDScript",
+"path": "res://src/stationary_selectable.gd"
+}, {
+"base": "Node2D",
+"class": "StatusBar",
+"language": "GDScript",
+"path": "res://src/gui/status_bar.gd"
+}, {
+"base": "Node2D",
+"class": "StatusOverlay",
+"language": "GDScript",
+"path": "res://src/gui/status_overlay.gd"
 }, {
 "base": "Reference",
 "class": "Stopwatch",
@@ -2514,16 +2649,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/camera/swipe_camera.gd"
 }, {
-"base": "SurfacerCharacter",
-"class": "TestCharacter",
-"language": "GDScript",
-"path": "res://src/characters/test_character/test_character.gd"
-}, {
-"base": "SurfacerCharacter",
-"class": "TestCharacter2",
-"language": "GDScript",
-"path": "res://src/characters/test_character2/test_character2.gd"
-}, {
 "base": "SurfacesTilemap",
 "class": "TestOddShapesTilemap",
 "language": "GDScript",
@@ -2734,6 +2859,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/welcome_panel_control_row.gd"
 }, {
+"base": "Friendly",
+"class": "Worker",
+"language": "GDScript",
+"path": "res://src/characters/worker/worker.gd"
+}, {
 "base": "Reference",
 "class": "_Debouncer",
 "language": "GDScript",
@@ -2773,9 +2903,13 @@ _global_script_class_icons={
 "AnnotationElement": "",
 "AnnotationElementType": "",
 "Audio": "",
+"Base": "",
 "BeatTracker": "",
 "Behavior": "",
 "BehaviorMoveResult": "",
+"Building": "",
+"BuildingExplosion": "",
+"BuildingExplosionAnnotator": "",
 "ButtonControlsControlRow": "",
 "CameraDetector": "res://addons/scaffolder/assets/images/editor_icons/camera_detector.png",
 "CameraShake": "",
@@ -2826,6 +2960,8 @@ _global_script_class_icons={
 "ColorConfigInspectorPlugin": "",
 "ColorFactory": "",
 "ColorPalette": "",
+"Command": "",
+"CommandType": "",
 "ConfirmDataDeletionScreenLocal": "",
 "ConfirmDataDeletionScreenWithAnalytics": "",
 "ConnectionDirection": "",
@@ -2840,6 +2976,8 @@ _global_script_class_icons={
 "CornerMatchTileset": "",
 "CornerMatchTilesetInitializer": "",
 "CornerMatchTilesetShapeCalculator": "",
+"Cost": "",
+"CostLabel": "",
 "CrashReporter": "",
 "CrashTestDummy": "",
 "CustomControlRow": "",
@@ -2848,6 +2986,7 @@ _global_script_class_icons={
 "DebugPanel": "res://addons/scaffolder/assets/images/editor_icons/debug_panel.png",
 "DebugPanelControlRow": "",
 "DebugTimeDisplayControlRow": "",
+"Description": "",
 "DescriptionItemController": "",
 "DestinationLegendItem": "",
 "DestinationSurfaceAnnotationElement": "",
@@ -2892,6 +3031,8 @@ _global_script_class_icons={
 "EdgesWithOneStepGroupItemController": "",
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
+"EmptyStructure": "",
+"Enemy": "",
 "ExclamationMarkAnnotator": "",
 "FailedEdgeAttempt": "",
 "FailedEdgeAttemptAnnotationElement": "",
@@ -2932,6 +3073,8 @@ _global_script_class_icons={
 "FrameworkPluginMainScreen": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_panel_container.png",
 "FrameworkSchema": "",
 "FrameworkSchemaModes": "",
+"Friendly": "",
+"FriendlyStatus": "",
 "FromAirCalculator": "",
 "FromAirEdge": "",
 "FullScreenPanel": "res://addons/scaffolder/assets/images/editor_icons/full_screen_panel.png",
@@ -2943,6 +3086,9 @@ _global_script_class_icons={
 "GameMetadata": "",
 "GameOverScreen": "",
 "GamePlugin": "",
+"GameRadialMenu": "",
+"GameRadialMenuItem": "",
+"GameRadialMenuLabel": "",
 "GameSchema": "",
 "GameScreen": "",
 "GestureRecord": "",
@@ -2952,6 +3098,9 @@ _global_script_class_icons={
 "GridIndicesAnnotator": "",
 "HapticFeedbackControlRow": "",
 "HeaderControlRow": "",
+"Health": "",
+"HealthBar": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_node.png",
+"Hero": "",
 "HighScoreControlRow": "",
 "HorizontalMovementUtils": "",
 "HsvRangeColorConfig": "",
@@ -2962,8 +3111,11 @@ _global_script_class_icons={
 "HudKeyValueList": "",
 "HypotheticalEdgeTrajectoryLegendItem": "",
 "InfoPanel": "",
+"InfoPanelCommandRow": "",
+"InfoPanelContents": "",
 "InfoPanelController": "",
 "InfoPanelData": "",
+"InfoPanelHealthLabel": "res://addons/scaffolder/assets/images/editor_icons/progress_bar.png",
 "InspectorEnabledControlRow": "",
 "InspectorItemController": "",
 "InspectorItemType": "",
@@ -2988,6 +3140,7 @@ _global_script_class_icons={
 "JumpLandPositionsUtils": "",
 "KinematicCollision2DCopy": "",
 "LabeledControlList": "res://addons/scaffolder/assets/images/editor_icons/control_row_list.png",
+"LargeEnemy": "",
 "LdLoadingScreen": "",
 "LeftWallsItemController": "",
 "Legend": "",
@@ -3167,6 +3320,7 @@ _global_script_class_icons={
 "SliderControlRow": "",
 "SlowMotionController": "",
 "SlowMotionMusic": "",
+"SmallEnemy": "",
 "SoundEffectsControlRow": "",
 "Spacer": "res://addons/scaffolder/assets/images/editor_icons/spacer.png",
 "SplashScreen": "",
@@ -3193,6 +3347,9 @@ _global_script_class_icons={
 "StaticCamera": "",
 "StaticColorConfig": "",
 "StaticTextControlRow": "",
+"StationarySelectable": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_node.png",
+"StatusBar": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_node.png",
+"StatusOverlay": "res://addons/scaffolder/assets/images/editor_icons/scaffolder_node.png",
 "Stopwatch": "",
 "StyleBoxFlatScalable": "",
 "StyleBoxTextureScalable": "",
@@ -3261,8 +3418,6 @@ _global_script_class_icons={
 "SurfacesTileset": "",
 "SurfacesTilesetInitializer": "",
 "SwipeCamera": "",
-"TestCharacter": "",
-"TestCharacter2": "",
 "TestOddShapesTilemap": "",
 "TestOddShapesTileset": "",
 "TextControlRow": "",
@@ -3305,6 +3460,7 @@ _global_script_class_icons={
 "WaypointValidity": "",
 "WelcomePanel": "",
 "WelcomePanelControlRow": "",
+"Worker": "",
 "_Debouncer": "",
 "_Interval": "",
 "_Throttler": "",
@@ -3349,6 +3505,16 @@ pointing/emulate_touch_from_mouse=true
 
 2d_render/layer_2="character"
 2d_physics/layer_1="surfaces_tilemaps"
+2d_physics/layer_2="legacy1"
+2d_physics/layer_3="legacy2"
+2d_physics/layer_4="friendlies"
+2d_physics/layer_5="friendly_buildings"
+2d_physics/layer_6="enemies"
+2d_physics/layer_7="enemy_buildings"
+2d_physics/layer_8="friendly_projectile"
+2d_physics/layer_9="enemy_projectile"
+2d_physics/layer_10="friendly_building_defense_range"
+2d_physics/layer_11="friendly_building_offense_range"
 
 [logging]
 

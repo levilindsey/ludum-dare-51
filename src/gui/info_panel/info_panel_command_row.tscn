@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/gui/cost_label.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_texture_rect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/gui/info_panel/info_panel_command_row.gd" type="Script" id=4]
+
+[node name="InfoPanelCommandRow" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+script = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 47.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 31.0
+margin_bottom = 22.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 0
+
+[node name="ScaffolderTextureRect" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+margin_left = 15.0
+margin_right = 15.0
+texture_scale = Vector2( 3, 3 )
+
+[node name="CostLabel" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 31.0
+margin_bottom = 22.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 0
+cost = -1
+font_size = "Xs"
+
+[node name="Spacer" parent="HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 31.0
+margin_top = 11.0
+margin_right = 47.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 16, 0 )
+size = Vector2( 16, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 47.0
+margin_right = 47.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_constants/separation = 0

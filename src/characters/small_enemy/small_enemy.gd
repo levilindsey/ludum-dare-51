@@ -1,5 +1,5 @@
 tool
-class_name TestCharacter2
+class_name SmallEnemy
 extends SurfacerCharacter
 
 

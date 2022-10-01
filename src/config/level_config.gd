@@ -16,11 +16,10 @@ var level_manifest := {
         unlock_conditions = "unlocked",
         scene_path = LEVELS_PATH_PREFIX + "level0.tscn",
         platform_graph_character_category_names = [
-            "test_character",
+            "hero",
+            "small_enemy",
         ],
         cell_size = Vector2(32.0, 32.0),
-        # FIXME: -------------------
-#        music = "main_music",
     },
 #    "1": {
 #        name = "Foo",

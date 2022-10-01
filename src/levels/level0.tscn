@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/levels/game_level.gd" type="Script" id=1]
 [ext_resource path="res://src/tiles/collidable_tilemap.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://addons/surfacer/src/tiles/surface_enablement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/tiles/collidable_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://addons/surface_tiler/src/corner_match_inner_tilemap.gd" type="Script" id=7]
+[ext_resource path="res://src/buildings/base.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/buildings/empty_structure.tscn" type="PackedScene" id=9]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,9 +31,17 @@ id = "0_inner"
 [node name="IntroChoreographyDestination" type="Position2D" parent="." groups=["intro_choreography_destination"]]
 
 [node name="SurfacerSpawnPosition" parent="." instance=ExtResource( 4 )]
-character_name = "test_character"
-character_name = "test_character"
+character_name = "hero"
+character_name = "hero"
 
 [node name="SurfaceEnablement" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0, 1, 0.0999999, 0.7 )
 character_categories = 0
+
+[node name="Structures" type="Node2D" parent="."]
+
+[node name="Base" parent="Structures" instance=ExtResource( 8 )]
+position = Vector2( -207, 66 )
+
+[node name="EmptyStructure" parent="Structures" instance=ExtResource( 9 )]
+position = Vector2( 321, 65 )

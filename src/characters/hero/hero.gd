@@ -1,6 +1,16 @@
 tool
-class_name TestCharacter
-extends SurfacerCharacter
+class_name Hero
+extends Friendly
+
+
+func _ready() -> void:
+    is_initial_nav = false
+    is_new = false
+
+
+func _on_health_depleted() -> void:
+    # FIXME: ------------------------- Game over!
+    pass
 
 
 #func _on_started_colliding(
