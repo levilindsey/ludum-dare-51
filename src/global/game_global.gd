@@ -86,7 +86,7 @@ func _get_manifest_overrides() -> Array:
             Sc.manifest.character_manifest.omits_npcs and debug],
         
         ["Su.manifest.precompute_platform_graph_for_levels", [
-            "0",
+#            "0",
         ]],
         ["Su.manifest.ignores_platform_graph_save_files", false],
         
