@@ -18,14 +18,14 @@ func set_up(type) -> void:
     $HBoxContainer/VBoxContainer2/ScaffolderTextureRect.modulate = \
         Sc.gui.hud.radial_menu_item_normal_color_modulate.sample()
     
-    $HBoxContainer/VBoxContainer2/EnergyLabel.modulate.a = \
+    $HBoxContainer/VBoxContainer2/CostLabel.modulate.a = \
             1.0 if \
             cost != 0 else \
             0.0
     if cost > 0:
-        $HBoxContainer/VBoxContainer2/EnergyLabel.cost = cost
+        $HBoxContainer/VBoxContainer2/CostLabel.cost = cost
     elif cost < 0:
-        $HBoxContainer/VBoxContainer2/EnergyLabel.text = "?"
+        $HBoxContainer/VBoxContainer2/CostLabel.text = "?"
     
     for line in description_lines:
         var row: ScaffolderLabel = Sc.utils.add_scene(

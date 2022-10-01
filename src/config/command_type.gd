@@ -39,9 +39,6 @@ enum {
     MEDIUM_WORKER,
     LARGE_WORKER,
     
-    SMALL_ENEMY,
-    LARGE_ENEMY,
-    
     SMALL_BASE,
     MEDIUM_BASE,
     LARGE_BASE,
@@ -53,6 +50,10 @@ enum {
     SMALL_FARM,
     MEDIUM_FARM,
     LARGE_FARM,
+    
+    BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL,
+    ENEMY_LARGE,
 }
 
 const VALUES := [
@@ -90,9 +91,6 @@ const VALUES := [
     MEDIUM_WORKER,
     LARGE_WORKER,
     
-    SMALL_ENEMY,
-    LARGE_ENEMY,
-    
     SMALL_BASE,
     MEDIUM_BASE,
     LARGE_BASE,
@@ -104,6 +102,10 @@ const VALUES := [
     SMALL_FARM,
     MEDIUM_FARM,
     LARGE_FARM,
+
+    BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL,
+    ENEMY_LARGE,
 ]
 
 const COSTS := {
@@ -134,26 +136,27 @@ const COSTS := {
     BUILDING_STOP: Cost.BUILDING_STOP,
     BUILDING_INFO: Cost.BUILDING_INFO,
     
-    HERO: 0,
+    HERO: Cost.HERO,
     
-    SMALL_WORKER: 0,
-    MEDIUM_WORKER: 0,
-    LARGE_WORKER: 0,
+    SMALL_WORKER: Cost.SMALL_WORKER,
+    MEDIUM_WORKER: Cost.MEDIUM_WORKER,
+    LARGE_WORKER: Cost.LARGE_WORKER,
     
-    SMALL_ENEMY: 0,
-    LARGE_ENEMY: 0,
+    SMALL_BASE: Cost.SMALL_BASE,
+    MEDIUM_BASE: Cost.MEDIUM_BASE,
+    LARGE_BASE: Cost.LARGE_BASE,
     
-    SMALL_BASE: 0,
-    MEDIUM_BASE: 0,
-    LARGE_BASE: 0,
+    SMALL_TOWER: Cost.SMALL_TOWER,
+    MEDIUM_TOWER: Cost.MEDIUM_TOWER,
+    LARGE_TOWER: Cost.LARGE_TOWER,
     
-    SMALL_TOWER: 0,
-    MEDIUM_TOWER: 0,
-    LARGE_TOWER: 0,
+    SMALL_FARM: Cost.SMALL_FARM,
+    MEDIUM_FARM: Cost.MEDIUM_FARM,
+    LARGE_FARM: Cost.LARGE_FARM,
     
-    SMALL_FARM: 0,
-    MEDIUM_FARM: 0,
-    LARGE_FARM: 0,
+    BUILDING_ENEMY_SPAWN: Cost.BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL: Cost.ENEMY_SMALL,
+    ENEMY_LARGE: Cost.ENEMY_LARGE,
 }
 
 const ENTITY_NAMES := {
@@ -163,8 +166,7 @@ const ENTITY_NAMES := {
     MEDIUM_WORKER: Description.ENTITY_NAMES.MEDIUM_WORKER,
     LARGE_WORKER: Description.ENTITY_NAMES.LARGE_WORKER,
     
-    SMALL_ENEMY: Description.ENTITY_NAMES.SMALL_ENEMY,
-    LARGE_ENEMY: Description.ENTITY_NAMES.LARGE_ENEMY,
+    BUILDING_EMPTY: Description.ENTITY_NAMES.BUILDING_EMPTY,
     
     SMALL_BASE: Description.ENTITY_NAMES.SMALL_BASE,
     MEDIUM_BASE: Description.ENTITY_NAMES.MEDIUM_BASE,
@@ -177,6 +179,10 @@ const ENTITY_NAMES := {
     SMALL_FARM: Description.ENTITY_NAMES.SMALL_FARM,
     MEDIUM_FARM: Description.ENTITY_NAMES.MEDIUM_FARM,
     LARGE_FARM: Description.ENTITY_NAMES.LARGE_FARM,
+
+    BUILDING_ENEMY_SPAWN: Description.ENTITY_NAMES.BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL: Description.ENTITY_NAMES.ENEMY_SMALL,
+    ENEMY_LARGE: Description.ENTITY_NAMES.ENEMY_LARGE,
 }
 
 const ENTITY_DESCRIPTIONS := {
@@ -186,8 +192,7 @@ const ENTITY_DESCRIPTIONS := {
     MEDIUM_WORKER: Description.ENTITY_DESCRIPTIONS.MEDIUM_WORKER,
     LARGE_WORKER: Description.ENTITY_DESCRIPTIONS.LARGE_WORKER,
     
-    SMALL_ENEMY: Description.ENTITY_DESCRIPTIONS.SMALL_ENEMY,
-    LARGE_ENEMY: Description.ENTITY_DESCRIPTIONS.LARGE_ENEMY,
+    BUILDING_EMPTY: Description.ENTITY_DESCRIPTIONS.BUILDING_EMPTY,
     
     SMALL_BASE: Description.ENTITY_DESCRIPTIONS.SMALL_BASE,
     MEDIUM_BASE: Description.ENTITY_DESCRIPTIONS.MEDIUM_BASE,
@@ -200,6 +205,10 @@ const ENTITY_DESCRIPTIONS := {
     SMALL_FARM: Description.ENTITY_DESCRIPTIONS.SMALL_FARM,
     MEDIUM_FARM: Description.ENTITY_DESCRIPTIONS.MEDIUM_FARM,
     LARGE_FARM: Description.ENTITY_DESCRIPTIONS.LARGE_FARM,
+
+    BUILDING_ENEMY_SPAWN: Description.ENTITY_DESCRIPTIONS.BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL: Description.ENTITY_DESCRIPTIONS.ENEMY_SMALL,
+    ENEMY_LARGE: Description.ENTITY_DESCRIPTIONS.ENEMY_LARGE,
 }
 
 const COMMAND_LABELS := {
@@ -251,6 +260,10 @@ const COMMAND_LABELS := {
     SMALL_FARM: Description.COMMAND_LABELS.SMALL_FARM,
     MEDIUM_FARM: Description.COMMAND_LABELS.MEDIUM_FARM,
     LARGE_FARM: Description.COMMAND_LABELS.LARGE_FARM,
+
+    BUILDING_ENEMY_SPAWN: Description.COMMAND_LABELS.BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL: Description.COMMAND_LABELS.ENEMY_SMALL,
+    ENEMY_LARGE: Description.COMMAND_LABELS.ENEMY_LARGE,
 }
 
 const COMMAND_DESCRIPTIONS := {
@@ -286,9 +299,6 @@ const COMMAND_DESCRIPTIONS := {
 #    SMALL_WORKER: Description.COMMAND_DESCRIPTIONS.SMALL_WORKER,
 #    MEDIUM_WORKER: Description.COMMAND_DESCRIPTIONS.MEDIUM_WORKER,
 #    LARGE_WORKER: Description.COMMAND_DESCRIPTIONS.LARGE_WORKER,
-#
-#    SMALL_ENEMY: Description.COMMAND_DESCRIPTIONS.SMALL_ENEMY,
-#    LARGE_ENEMY: Description.COMMAND_DESCRIPTIONS.LARGE_ENEMY,
     
     SMALL_BASE: Description.COMMAND_DESCRIPTIONS.SMALL_BASE,
     MEDIUM_BASE: Description.COMMAND_DESCRIPTIONS.MEDIUM_BASE,
@@ -301,6 +311,10 @@ const COMMAND_DESCRIPTIONS := {
     SMALL_FARM: Description.COMMAND_DESCRIPTIONS.SMALL_FARM,
     MEDIUM_FARM: Description.COMMAND_DESCRIPTIONS.MEDIUM_FARM,
     LARGE_FARM: Description.COMMAND_DESCRIPTIONS.LARGE_FARM,
+
+    BUILDING_ENEMY_SPAWN: Description.COMMAND_DESCRIPTIONS.BUILDING_ENEMY_SPAWN,
+    ENEMY_SMALL: Description.COMMAND_DESCRIPTIONS.ENEMY_SMALL,
+    ENEMY_LARGE: Description.COMMAND_DESCRIPTIONS.ENEMY_LARGE,
 }
 
 const TEXTURES := {
@@ -310,9 +324,10 @@ const TEXTURES := {
     FRIENDLY_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     FRIENDLY_RALLY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     FRIENDLY_MOVE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    FRIENDLY_STOP: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    FRIENDLY_INFO: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    FRIENDLY_STOP: preload("res://assets/images/gui/overlay_buttons/stop_overlay_button.png"),
+    FRIENDLY_INFO: preload("res://assets/images/gui/overlay_buttons/info_overlay_button.png"),
     
+    BUILDING_EMPTY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_TOWER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
@@ -327,17 +342,14 @@ const TEXTURES := {
     BUILDING_OCCUPY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_VACATE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_RECYCLE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_STOP: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_INFO: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    BUILDING_STOP: preload("res://assets/images/gui/overlay_buttons/stop_overlay_button.png"),
+    BUILDING_INFO: preload("res://assets/images/gui/overlay_buttons/info_overlay_button.png"),
     
     HERO: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     
     SMALL_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     MEDIUM_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     LARGE_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    
-    SMALL_ENEMY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    LARGE_ENEMY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     
     SMALL_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     MEDIUM_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
@@ -350,6 +362,10 @@ const TEXTURES := {
     SMALL_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     MEDIUM_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     LARGE_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    
+    BUILDING_ENEMY_SPAWN: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    ENEMY_SMALL: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    ENEMY_LARGE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
 }
 
 
@@ -412,11 +428,6 @@ static func get_string(type: int) -> String:
         LARGE_WORKER:
             return "LARGE_WORKER"
         
-        SMALL_ENEMY:
-            return "SMALL_ENEMY"
-        LARGE_ENEMY:
-            return "LARGE_ENEMY"
-        
         SMALL_BASE:
             return "SMALL_BASE"
         MEDIUM_BASE:
@@ -437,6 +448,13 @@ static func get_string(type: int) -> String:
             return "MEDIUM_FARM"
         LARGE_FARM:
             return "LARGE_FARM"
+        
+        BUILDING_ENEMY_SPAWN:
+            return "BUILDING_ENEMY_SPAWN"
+        ENEMY_SMALL:
+            return "ENEMY_SMALL"
+        ENEMY_LARGE:
+            return "ENEMY_LARGE"
         
         _:
             Sc.logger.error("CommandType.get_string: %s" % str(type))

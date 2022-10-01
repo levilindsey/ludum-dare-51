@@ -20,8 +20,7 @@ const ENTITY_NAMES := {
     MEDIUM_WORKER = "Strong worker",
     LARGE_WORKER = "Mighty worker",
     
-    SMALL_ENEMY = "Small enemy",
-    LARGE_ENEMY = "Big enemy",
+    BUILDING_EMPTY = "Build site",
     
     SMALL_BASE = "Small base",
     MEDIUM_BASE = "Medium base",
@@ -34,6 +33,10 @@ const ENTITY_NAMES := {
     SMALL_FARM = "Modest farm",
     MEDIUM_FARM = "Efficient farm",
     LARGE_FARM = "Super farm",
+    
+    BUILDING_ENEMY_SPAWN = "Enemy lair",
+    ENEMY_SMALL = "Minor monster",
+    ENEMY_LARGE = "Big bad monster",
 }
 
 const ENTITY_DESCRIPTIONS := {
@@ -65,15 +68,9 @@ const ENTITY_DESCRIPTIONS := {
         "Can collect money.",
     ],
     
-    SMALL_ENEMY = [
-        "Peevish.",
-        "Minor strength.",
-        "Can attack structures.",
-    ],
-    LARGE_ENEMY = [
-        "Quite grumpy.",
-        "Major strength.",
-        "Can attack structures.",
+    BUILDING_EMPTY = [
+        "Empty plot of land.",
+        "You should probably build something here.",
     ],
     
     SMALL_BASE = [
@@ -117,6 +114,22 @@ const ENTITY_DESCRIPTIONS := {
         "Bountiful production.",
         "A worker can occupy this farm to grow cash crops.",
     ],
+    
+    BUILDING_ENEMY_SPAWN = [
+        "Very dark in here.",
+        "Seems pretty scary--I wouldn't go in.",
+        "Probably best to just attack this until it collapses.",
+    ],
+    ENEMY_SMALL = [
+        "Peevish.",
+        "Minor strength.",
+        "Can attack structures.",
+    ],
+    ENEMY_LARGE = [
+        "Quite grumpy.",
+        "Major strength.",
+        "Can attack structures.",
+    ],
 }
 
 const COMMAND_LABELS := {
@@ -142,17 +155,21 @@ const COMMAND_LABELS := {
     BUILDING_STOP = "Stop",
     BUILDING_INFO = "Info",
     
-    SMALL_BASE = "Build sall base",
-    MEDIUM_BASE = "Build medium base",
-    LARGE_BASE = "Build large base",
+    SMALL_BASE = "Upgrade base",
+    MEDIUM_BASE = "Upgrade base",
+    LARGE_BASE = "Upgrade base",
     
-    SMALL_TOWER = "Build small guard tower",
-    MEDIUM_TOWER = "Build medium guard tower",
+    SMALL_TOWER = "Upgrade guard tower",
+    MEDIUM_TOWER = "Upgrade guard tower",
     LARGE_TOWER = "Build large guard tower",
     
-    SMALL_FARM = "Build modest farm",
-    MEDIUM_FARM = "Build efficient farm",
-    LARGE_FARM = "Build super farm",
+    SMALL_FARM = "Upgrade farm",
+    MEDIUM_FARM = "Upgrade farm",
+    LARGE_FARM = "Upgrade farm",
+    
+    BUILDING_ENEMY_SPAWN = "???",
+    ENEMY_SMALL = "???",
+    ENEMY_LARGE = "???",
 }
 
 const COMMAND_DESCRIPTIONS := {
@@ -239,5 +256,15 @@ const COMMAND_DESCRIPTIONS := {
     ],
     LARGE_FARM = [
         "Upgrades this farm. A better farm yields more money from each harvest.",
+    ],
+    
+    BUILDING_ENEMY_SPAWN = [
+        "???.",
+    ],
+    ENEMY_SMALL = [
+        "???.",
+    ],
+    ENEMY_LARGE = [
+        "???.",
     ],
 }

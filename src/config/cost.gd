@@ -34,9 +34,6 @@ const SMALL_WORKER := 0
 const MEDIUM_WORKER := 0
 const LARGE_WORKER := 0
 
-const SMALL_ENEMY := 0
-const LARGE_ENEMY := 0
-
 const SMALL_BASE := 0
 const MEDIUM_BASE := 0
 const LARGE_BASE := 0
@@ -48,3 +45,7 @@ const LARGE_TOWER := 0
 const SMALL_FARM := 0
 const MEDIUM_FARM := 0
 const LARGE_FARM := 0
+
+const BUILDING_ENEMY_SPAWN := 0
+const ENEMY_SMALL := 0
+const ENEMY_LARGE := 0

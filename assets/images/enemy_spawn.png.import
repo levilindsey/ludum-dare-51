@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/building_explosion.png-5bcc67eb1a3e06f2bf7d548611591c7d.stex"
+path="res://.import/enemy_spawn.png-891482bd47aceb30f6ef67c82f870f6d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/building_explosion.png"
-dest_files=[ "res://.import/building_explosion.png-5bcc67eb1a3e06f2bf7d548611591c7d.stex" ]
+source_file="res://assets/images/enemy_spawn.png"
+dest_files=[ "res://.import/enemy_spawn.png-891482bd47aceb30f6ef67c82f870f6d.stex" ]
 
 [params]
 

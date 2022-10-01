@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/building_explosion.png-5bcc67eb1a3e06f2bf7d548611591c7d.stex"
+path="res://.import/info_overlay_button.png-28c45c13b82380b70099157e201a9a91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/building_explosion.png"
-dest_files=[ "res://.import/building_explosion.png-5bcc67eb1a3e06f2bf7d548611591c7d.stex" ]
+source_file="res://assets/images/gui/overlay_buttons/info_overlay_button.png"
+dest_files=[ "res://.import/info_overlay_button.png-28c45c13b82380b70099157e201a9a91.stex" ]
 
 [params]
 

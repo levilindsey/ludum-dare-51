@@ -564,7 +564,7 @@ func remove_worker(worker: Worker) -> void:
 func add_enemy(enemy_type: int) -> Enemy:
     var enemy_scene: PackedScene
     match enemy_type:
-        CommandType.SMALL_ENEMY:
+        CommandType.ENEMY_SMALL:
             enemy_scene = _SMALL_ENEMY_SCENE
         CommandType.LARGE_ENEMY:
             enemy_scene = _LARGE_ENEMY_SCENE

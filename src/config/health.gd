@@ -8,9 +8,6 @@ const SMALL_WORKER := 200
 const MEDIUM_WORKER := 800
 const LARGE_WORKER := 3200
 
-const SMALL_ENEMY := 100
-const LARGE_ENEMY := 800
-
 const BUILDING_EMPTY := -1
 
 const SMALL_BASE := 4000
@@ -25,6 +22,10 @@ const SMALL_FARM := 800
 const MEDIUM_FARM := 3200
 const LARGE_FARM := 12800
 
+const BUILDING_ENEMY_SPAWN := 12800
+const ENEMY_SMALL := 100
+const ENEMY_LARGE := 1600
+
 
 static func get_default_capacity(entity_command_type: int) -> int:
     match entity_command_type:
@@ -37,11 +38,6 @@ static func get_default_capacity(entity_command_type: int) -> int:
             return MEDIUM_WORKER
         CommandType.LARGE_WORKER:
             return LARGE_WORKER
-        
-        CommandType.SMALL_ENEMY:
-            return SMALL_ENEMY
-        CommandType.LARGE_ENEMY:
-            return LARGE_ENEMY
         
         CommandType.BUILDING_EMPTY:
             return BUILDING_EMPTY
@@ -66,6 +62,13 @@ static func get_default_capacity(entity_command_type: int) -> int:
             return MEDIUM_FARM
         CommandType.LARGE_FARM:
             return LARGE_FARM
+        
+        CommandType.BUILDING_ENEMY_SPAWN:
+            return BUILDING_ENEMY_SPAWN
+        CommandType.ENEMY_SMALL:
+            return ENEMY_SMALL
+        CommandType.ENEMY_LARGE:
+            return ENEMY_LARGE
         
         _:
             Sc.logger.error("Health.get_default_capacity")

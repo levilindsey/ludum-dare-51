@@ -346,8 +346,6 @@ func get_can_handle_command(type: int) -> bool:
         CommandType.SMALL_WORKER, \
         CommandType.MEDIUM_WORKER, \
         CommandType.LARGE_WORKER, \
-        CommandType.SMALL_ENEMY, \
-        CommandType.LARGE_ENEMY, \
         CommandType.SMALL_BASE, \
         CommandType.MEDIUM_BASE, \
         CommandType.LARGE_BASE, \
@@ -356,7 +354,10 @@ func get_can_handle_command(type: int) -> bool:
         CommandType.LARGE_TOWER, \
         CommandType.SMALL_FARM, \
         CommandType.MEDIUM_FARM, \
-        CommandType.LARGE_FARM:
+        CommandType.LARGE_FARM, \
+        CommandType.BUILDING_ENEMY_SPAWN, \
+        CommandType.ENEMY_SMALL, \
+        CommandType.ENEMY_LARGE:
             return false
         
         CommandType.UNKNOWN, \
