@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/levels/game_level.gd" type="Script" id=1]
 [ext_resource path="res://src/tiles/collidable_tilemap.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://src/tiles/collidable_tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://addons/surface_tiler/src/corner_match_inner_tilemap.gd" type="Script" id=7]
 [ext_resource path="res://src/buildings/small_base.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/buildings/empty_structure.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/buildings/enemy_spawn.tscn" type="PackedScene" id=10]
 
 [node name="Level0" type="Node2D"]
@@ -43,10 +42,6 @@ character_categories = 0
 
 [node name="SmallBase" parent="Buildings" instance=ExtResource( 8 )]
 position = Vector2( -256, 64 )
-monitorable = false
-
-[node name="EmptyStructure" parent="Buildings" instance=ExtResource( 9 )]
-position = Vector2( 320, 64 )
 monitorable = false
 
 [node name="EnemySpawn" parent="Buildings" instance=ExtResource( 10 )]
