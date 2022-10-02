@@ -44,9 +44,11 @@ character_categories = 0
 
 [node name="SmallBase" parent="Structures" instance=ExtResource( 8 )]
 position = Vector2( -256, 64 )
+monitorable = false
 
 [node name="EmptyStructure" parent="Structures" instance=ExtResource( 9 )]
 position = Vector2( 320, 64 )
+monitorable = false
 
 [node name="EnemySpawn" parent="Structures" instance=ExtResource( 10 )]
 position = Vector2( 1152, -96 )

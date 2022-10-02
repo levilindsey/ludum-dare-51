@@ -3,7 +3,7 @@ class_name FiringRange
 extends Area2D
 
 
-const _RANGE_MULTIPLIER := 0.88
+const _RANGE_MULTIPLIER := 0.6
 const _RANGE_TEST_ANGLE := PI / 4.0
 
 export var entity_command_type := CommandType.UNKNOWN

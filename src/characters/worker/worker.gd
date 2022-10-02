@@ -116,7 +116,7 @@ func _update_shooting() -> void:
             entity_command_type,
             upgrade_type,
             tower_upgrade_type,
-            shooting_target,
+            shooting_target.position,
             get_projectile_launch_position())
 
 

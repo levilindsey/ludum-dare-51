@@ -733,6 +733,7 @@ func add_projectile(
     var projectile: Projectile = projectile_scene.instance()
     projectile.position = position
     projectile.velocity = velocity
+    add_child(projectile)
     
     projectiles.push_back(projectile)
     

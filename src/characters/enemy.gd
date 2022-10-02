@@ -187,7 +187,7 @@ func _update_shooting() -> void:
             entity_command_type,
             upgrade_type,
             tower_upgrade_type,
-            shooting_target,
+            shooting_target.position,
             get_projectile_launch_position())
 
 
@@ -200,6 +200,8 @@ func _destroy() -> void:
 func _physics_process(delta: float) -> void:
     if Engine.editor_hint:
         return
+    
+    _update_shooting()
     
     if did_move_last_frame:
         _update_highlight_for_camera_position()

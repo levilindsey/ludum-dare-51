@@ -28,8 +28,8 @@ static func calculate_start_velocity(
     var start_angle := lower_angle if uses_lower_angle else upper_angle
     
     var start_velocity := Vector2(
-        cos(start_angle) * start_speed,
-        sin(start_angle) * start_speed)
+        cos(-start_angle) * start_speed,
+        sin(-start_angle) * start_speed)
     if displacement.x < 0:
         start_velocity.x *= -1
     
