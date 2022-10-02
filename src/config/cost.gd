@@ -5,7 +5,7 @@ extends Reference
 const FRIENDLY_SMALL_UPGRADE := 400
 const FRIENDLY_MEDIUM_UPGRADE := 1600
 
-const FRIENDLY_RALLY := 0
+const FRIENDLY_RALLY := 1000
 const FRIENDLY_MOVE := 0
 const FRIENDLY_STOP := 0
 const FRIENDLY_INFO := 0

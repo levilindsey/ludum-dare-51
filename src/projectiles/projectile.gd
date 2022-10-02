@@ -31,11 +31,11 @@ func _destroy() -> void:
 func _get_damage_for_projectile_type() -> float:
     match projectile_type:
         FRIENDLY:
-            return 34.0
+            return 50.0
         SMALL_ENEMY:
-            return 34.0
+            return 50.0
         LARGE_ENEMY:
-            return 34.0 * 8.0
+            return 50.0 * 4.0
         _:
             Sc.logger.error("Projectile._get_damage_for_projectile_type")
             return INF

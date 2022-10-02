@@ -862,6 +862,24 @@ func on_enemy_health_depleted(enemy: Enemy) -> void:
     remove_enemy(enemy)
 
 
+func rally(destination: PositionAlongSurface) -> void:
+    for worker in workers:
+        # Add some variance to the positioning.
+        var spread := 64.0
+        var offset_x := randf() * spread - spread / 2.0
+        var target_point := destination.target_point
+        target_point.x += offset_x
+        var randomized_destination := PositionAlongSurfaceFactory \
+            .create_position_offset_from_target_point(
+                target_point,
+                destination.surface,
+                worker.collider,
+                true,
+                true)
+        
+        worker.navigate_imperatively(randomized_destination)
+
+
 func _update_session_counts() -> void:
     session.worker_count = workers.size()
     session.enemy_count = enemies.size()

@@ -319,7 +319,7 @@ const TEXTURES := {
     
     FRIENDLY_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     FRIENDLY_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
-    FRIENDLY_RALLY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    FRIENDLY_RALLY: preload("res://assets/images/gui/overlay_buttons/rally_overlay_button.png"),
     FRIENDLY_MOVE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     FRIENDLY_STOP: preload("res://assets/images/gui/overlay_buttons/stop_overlay_button.png"),
     FRIENDLY_INFO: preload("res://assets/images/gui/overlay_buttons/info_overlay_button.png"),

@@ -145,3 +145,18 @@ func _process_sounds() -> void:
         Sc.audio.play_sound("test_character_land")
     elif surface_state.just_touched_surface:
         Sc.audio.play_sound("test_character_hit_surface")
+
+
+func _on_radial_menu_item_selected(item: RadialMenuItem) -> void:
+    match item.id:
+        CommandType.FRIENDLY_RALLY:
+            Sc.level.rally(self.surface_state.last_position_along_surface)
+        _:
+            ._on_radial_menu_item_selected(item)
+
+
+func _get_radial_menu_item_types() -> Array:
+    return [
+        CommandType.FRIENDLY_RALLY,
+        CommandType.FRIENDLY_INFO,
+    ]

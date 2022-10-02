@@ -2,29 +2,29 @@ class_name Health
 extends Reference
 
 
-const HERO := 1000
+const HERO := 800
 
-const SMALL_WORKER := 200
-const MEDIUM_WORKER := 800
-const LARGE_WORKER := 3200
+const SMALL_WORKER := 100
+const MEDIUM_WORKER := 400
+const LARGE_WORKER := 800
 
 const BUILDING_EMPTY := -1
 
-const SMALL_BASE := 4000
-const MEDIUM_BASE := 16000
-const LARGE_BASE := 64000
+const SMALL_BASE := 2000
+const MEDIUM_BASE := 4000
+const LARGE_BASE := 8000
 
-const SMALL_TOWER := 2000
-const MEDIUM_TOWER := 8000
-const LARGE_TOWER := 32000
+const SMALL_TOWER := 100
+const MEDIUM_TOWER := 2000
+const LARGE_TOWER := 4000
 
 const SMALL_FARM := 800
-const MEDIUM_FARM := 3200
-const LARGE_FARM := 12800
+const MEDIUM_FARM := 1600
+const LARGE_FARM := 3200
 
-const BUILDING_ENEMY_SPAWN := 12800
+const BUILDING_ENEMY_SPAWN := 2000
 const ENEMY_SMALL := 100
-const ENEMY_LARGE := 1600
+const ENEMY_LARGE := 600
 
 
 static func get_default_capacity(entity_command_type: int) -> int:

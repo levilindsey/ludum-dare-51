@@ -103,7 +103,12 @@ func _on_button_pressed(button_type: int) -> void:
         CommandType.BUILDING_TOWER_SMALL_UPGRADE, \
         CommandType.BUILDING_TOWER_MEDIUM_UPGRADE, \
         CommandType.BUILDING_FARM_SMALL_UPGRADE, \
-        CommandType.BUILDING_FARM_MEDIUM_UPGRADE:
+        CommandType.BUILDING_FARM_MEDIUM_UPGRADE, \
+        CommandType.SMALL_TOWER, \
+        CommandType.MEDIUM_TOWER, \
+        CommandType.LARGE_TOWER, \
+        CommandType.MEDIUM_BASE, \
+        CommandType.LARGE_BASE:
             # FIXME: ---------------------------
 #            Sc.audio.play_sound("command_finished")
             set_is_selected(false)
@@ -122,6 +127,10 @@ func _on_button_pressed(button_type: int) -> void:
             occupying_worker._on_vacated_building()
             occupying_worker = null
         
+        CommandType.FRIENDLY_RALLY:
+            if is_instance_valid(Sc.level.hero):
+                Sc.level.rally(get_position_along_surface(Sc.level.hero))
+        
         _:
             Sc.logger.error("Building._on_button_pressed")
 
@@ -129,16 +138,24 @@ func _on_button_pressed(button_type: int) -> void:
 func _upgrade_building(button_type: int) -> void:
     var new_building_type: int
     match button_type:
-        CommandType.BUILDING_BASE_SMALL_UPGRADE:
+        CommandType.BUILDING_TOWER, \
+        CommandType.SMALL_TOWER:
+            assert(entity_command_type == CommandType.BUILDING_EMPTY)
+            new_building_type = CommandType.SMALL_TOWER
+        CommandType.BUILDING_BASE_SMALL_UPGRADE, \
+        CommandType.MEDIUM_BASE:
             assert(entity_command_type == CommandType.SMALL_BASE)
             new_building_type = CommandType.MEDIUM_BASE
-        CommandType.BUILDING_BASE_MEDIUM_UPGRADE:
+        CommandType.BUILDING_BASE_MEDIUM_UPGRADE, \
+        CommandType.LARGE_BASE:
             assert(entity_command_type == CommandType.MEDIUM_BASE)
             new_building_type = CommandType.LARGE_BASE
-        CommandType.BUILDING_TOWER_SMALL_UPGRADE:
+        CommandType.BUILDING_TOWER_SMALL_UPGRADE, \
+        CommandType.MEDIUM_TOWER:
             assert(entity_command_type == CommandType.SMALL_TOWER)
             new_building_type = CommandType.MEDIUM_TOWER
-        CommandType.BUILDING_TOWER_MEDIUM_UPGRADE:
+        CommandType.BUILDING_TOWER_MEDIUM_UPGRADE, \
+        CommandType.LARGE_TOWER:
             assert(entity_command_type == CommandType.MEDIUM_TOWER)
             new_building_type = CommandType.LARGE_TOWER
         CommandType.BUILDING_FARM_SMALL_UPGRADE:

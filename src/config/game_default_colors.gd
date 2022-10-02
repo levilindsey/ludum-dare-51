@@ -3,17 +3,17 @@ class_name GameDefaultColors
 extends Reference
 
 
-var _COLOR_BACKGROUND := Color("453d30")
-var _COLOR_BACKGROUND_LIGHTER := Color("574d3d")
-var _COLOR_BACKGROUND_DARKER := Color("362f25")
+var _COLOR_BACKGROUND := Color("292827")
+var _COLOR_BACKGROUND_LIGHTER := Color("3d3c3b")
+var _COLOR_BACKGROUND_DARKER := Color("171616")
 
 var _COLOR_TEXT := Color("eeeeee")
-var _COLOR_HEADER := Color("faca7d")
-var _COLOR_FOCUS := Color("faca7d")
+var _COLOR_HEADER := Color("b3ac9d")
+var _COLOR_FOCUS := Color("292827")
 
-var _COLOR_BUTTON := Color("c27e10")
-var _COLOR_BUTTON_LIGHTER := Color("eba534")
-var _COLOR_BUTTON_DARKER := Color("734905")
+var _COLOR_BUTTON := Color("065fc4")
+var _COLOR_BUTTON_LIGHTER := Color("248fe0")
+var _COLOR_BUTTON_DARKER := Color("021899")
 
 var _COLOR_SHADOW := Color("88000000")
 

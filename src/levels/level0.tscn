@@ -37,7 +37,6 @@ character_name = "hero"
 character_name = "hero"
 
 [node name="SurfaceEnablement" parent="." instance=ExtResource( 5 )]
-modulate = Color( 0, 1, 0.0999999, 0.7 )
 character_categories = 0
 
 [node name="Buildings" type="Node2D" parent="."]
@@ -52,3 +51,10 @@ monitorable = false
 
 [node name="EnemySpawn" parent="Buildings" instance=ExtResource( 10 )]
 position = Vector2( 1152, -96 )
+is_disabled = false
+is_focused = false
+distance_squared_offset_for_selection_priority = 0.0
+mouse_filter = 0
+is_desaturatable = false
+shape_is_rectangular = true
+shape_circle_radius = -1.0

@@ -20,6 +20,7 @@ func _build_structure(button_type: int) -> void:
 
 func _get_radial_menu_item_types() -> Array:
     return [
+        CommandType.FRIENDLY_RALLY,
         CommandType.BUILDING_INFO,
     ]
 
