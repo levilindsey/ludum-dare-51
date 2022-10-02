@@ -3,6 +3,9 @@ class_name Enemy
 extends SurfacerCharacter
 
 
+const MODERATE_MODULATION := Color("8284ff")
+const MAJOR_MODULATION := Color("ff7373")
+
 const _FIRING_RANGE_SCENE := preload("res://src/firing_range.tscn")
 
 export var projectile_launch_offset := Vector2.ZERO
@@ -72,9 +75,9 @@ func set_upgrade_type(upgrade_type: int) -> void:
         UpgradeType.MINOR:
             pass
         UpgradeType.MODERATE:
-            pass
+            self.modulate = MODERATE_MODULATION
         UpgradeType.MAJOR:
-            pass
+            self.modulate = MAJOR_MODULATION
         _:
             Sc.logger.error("Enemy.set_upgrade_type")
 
@@ -175,7 +178,7 @@ func _handle_shooting(target) -> void:
     if shooting_target == target:
         return
     shooting_target = target
-    shot_start_time = Sc.time.get_scaled_play_time()
+    shot_start_time = Game.scaled_play_time
     stop_on_surface()
 
 func _handle_not_shooting() -> void:
@@ -190,7 +193,7 @@ func get_is_shooting() -> bool:
 func _update_shooting() -> void:
     if !get_is_shooting():
         return
-    var shot_current_time := Sc.time.get_scaled_play_time()
+    var shot_current_time := Game.scaled_play_time
     while shot_current_time - shot_start_time > firing_interval:
         shot_start_time += firing_interval
         
@@ -219,6 +222,9 @@ func _physics_process(delta: float) -> void:
     
     if did_move_last_frame:
         _update_highlight_for_camera_position()
+    
+    if position.y > 4000:
+        Sc.level.remove_enemy(self)
 
 
 func _on_level_started() -> void:

@@ -15,8 +15,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func trigger_spawn() -> void:
-#    Sc.game.add_worker(CommandType.SMALL_WORKER)
-    pass
+    Sc.level.add_worker(CommandType.SMALL_WORKER)
 
 
 func on_worker_added(worker: Worker) -> void:

@@ -317,8 +317,8 @@ const COMMAND_DESCRIPTIONS := {
 const TEXTURES := {
     UNKNOWN: null,
     
-    FRIENDLY_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    FRIENDLY_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    FRIENDLY_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    FRIENDLY_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     FRIENDLY_RALLY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     FRIENDLY_MOVE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     FRIENDLY_STOP: preload("res://assets/images/gui/overlay_buttons/stop_overlay_button.png"),
@@ -329,12 +329,12 @@ const TEXTURES := {
     BUILDING_TOWER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     
-    BUILDING_BASE_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_BASE_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_TOWER_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_TOWER_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_FARM_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    BUILDING_FARM_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    BUILDING_BASE_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    BUILDING_BASE_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    BUILDING_TOWER_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    BUILDING_TOWER_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    BUILDING_FARM_SMALL_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    BUILDING_FARM_MEDIUM_UPGRADE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     
     BUILDING_OCCUPY: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     BUILDING_VACATE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
@@ -345,20 +345,20 @@ const TEXTURES := {
     HERO: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     
     SMALL_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    MEDIUM_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    LARGE_WORKER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    MEDIUM_WORKER: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    LARGE_WORKER: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     
     SMALL_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    MEDIUM_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    LARGE_BASE: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    MEDIUM_BASE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    LARGE_BASE: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     
-    SMALL_TOWER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    MEDIUM_TOWER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    LARGE_TOWER: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    SMALL_TOWER: preload("res://assets/images/gui/overlay_buttons/tower_overlay_button.png"),
+    MEDIUM_TOWER: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    LARGE_TOWER: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     
     SMALL_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    MEDIUM_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
-    LARGE_FARM: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
+    MEDIUM_FARM: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
+    LARGE_FARM: preload("res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"),
     
     BUILDING_ENEMY_SPAWN: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),
     ENEMY_SMALL: preload("res://assets/images/gui/overlay_buttons/destroy_overlay_button.png"),

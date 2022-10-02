@@ -38,6 +38,20 @@ func _ready() -> void:
     _set_up_firing_range()
     
     _walk_to_side_of_base()
+    
+    # FIXME: -------------------
+    # - Modulate color for upgrades.
+    # - Increase health attack and range for higher upgrades.
+    
+    match upgrade_type:
+        UpgradeType.MINOR:
+            pass
+        UpgradeType.MODERATE:
+            self.modulate = Enemy.MODERATE_MODULATION
+        UpgradeType.MAJOR:
+            self.modulate = Enemy.MAJOR_MODULATION
+        _:
+            Sc.logger.error("Worker.set_upgrade_type")
 
 
 func _set_up_firing_range() -> void:
@@ -100,7 +114,7 @@ func _handle_shooting(target) -> void:
     if shooting_target == target:
         return
     shooting_target = target
-    shot_start_time = Sc.time.get_scaled_play_time()
+    shot_start_time = Game.scaled_play_time
     if get_is_active():
         clear_command_state()
     Sc.level.on_worker_idleness_changed(self)
@@ -115,7 +129,7 @@ func get_is_shooting() -> bool:
 func _update_shooting() -> void:
     if !get_is_shooting():
         return
-    var shot_current_time := Sc.time.get_scaled_play_time()
+    var shot_current_time := Game.scaled_play_time
     while shot_current_time - shot_start_time > firing_interval:
         shot_start_time += firing_interval
         
@@ -180,7 +194,6 @@ func start_command(
     
     Sc.level.command_queue.erase(command)
     Sc.level.in_progress_commands[command] = true
-    Sc.gui.hud.command_queue_list.sync_queue()
     
     if !was_active and !is_initial_nav:
         Sc.level.on_worker_idleness_changed(self)
@@ -398,7 +411,6 @@ func _on_radial_menu_closed() -> void:
 
 func _get_radial_menu_item_types() -> Array:
     var types := [
-        CommandType.FRIENDLY_INFO,
     ]
     match entity_command_type:
         CommandType.SMALL_WORKER:
@@ -409,6 +421,7 @@ func _get_radial_menu_item_types() -> Array:
             pass
         _:
             Sc.logger.error("Worker._get_common_radial_menu_item_types")
+    types.push_back(CommandType.FRIENDLY_INFO)
     return types
 
 

@@ -24,6 +24,8 @@ var buildings_built_count := 0
 var projectiles_built_count := 0
 var projectiles_collided_count := 0
 
+var wave_count := 0
+
 
 func reset(id: String) -> void:
     .reset(id)
@@ -49,3 +51,5 @@ func reset(id: String) -> void:
     
     projectiles_built_count = 0
     projectiles_collided_count = 0
+    
+    wave_count = 0

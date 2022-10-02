@@ -12,6 +12,7 @@ const INFO_PANEL_CONTENTS_SCENE := preload(
     "res://src/gui/info_panel/info_panel_contents.tscn")
 
 var scaled_play_time := 0.0
+var level_play_time_start := 0.0
 var cooldown_count := 0
 var cooldown_time := 0.0
 var cooldown_ratio := 0.0
@@ -113,7 +114,7 @@ func _physics_process(_delta: float) -> void:
     if !is_initialized:
         return
     
-    scaled_play_time = Sc.time.get_scaled_play_time()
+    scaled_play_time = Sc.time.get_scaled_play_time() - level_play_time_start
     cooldown_count = int(scaled_play_time / COOLDOWN_TIME)
     cooldown_time = fmod(scaled_play_time, COOLDOWN_TIME)
     cooldown_ratio = cooldown_time / COOLDOWN_TIME

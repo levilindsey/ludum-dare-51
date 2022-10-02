@@ -132,6 +132,8 @@ func _ready() -> void:
     if Engine.editor_hint:
         return
     
+    Game.level_play_time_start = Sc.time.get_scaled_play_time()
+    
     _static_camera = StaticCamera.new()
     add_child(_static_camera)
     
@@ -277,23 +279,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_panned() -> void:
-    hero._on_panned()
-    for worker in workers:
-        worker._on_panned()
-    for enemy in enemies:
-        enemy._on_panned()
-    for building in buildings:
-        building._on_panned()
+    for collection in [[hero], workers, enemies, buildings]:
+        for unit in collection:
+            if !is_instance_valid(unit):
+                continue
+            unit._on_panned()
 
 
 func _on_zoomed() -> void:
-    hero._on_zoomed()
-    for worker in workers:
-        worker._on_zoomed()
-    for enemy in enemies:
-        enemy._on_zoomed()
-    for building in buildings:
-        building._on_zoomed()
+    for collection in [[hero], workers, enemies, buildings]:
+        for unit in collection:
+            if !is_instance_valid(unit):
+                continue
+            unit._on_zoomed()
 
 
 func _on_radial_menu_opened() -> void:
@@ -630,9 +628,10 @@ func add_worker(worker_type: int) -> Worker:
             base.get_center(),
             true,
             false,
-            true)
+            false)
     worker.entity_command_type = worker_type
     worker.upgrade_type = upgrade_type
+    add_child(worker)
     
     workers.push_back(worker)
     

@@ -724,6 +724,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/buildings/empty_structure.gd"
 }, {
+"base": "TextControlRow",
+"class": "EnemiesControlRow",
+"language": "GDScript",
+"path": "res://src/gui/control_rows/enemies_control_row.gd"
+}, {
 "base": "SurfacerCharacter",
 "class": "Enemy",
 "language": "GDScript",
@@ -1413,6 +1418,11 @@ _global_script_classes=[ {
 "class": "MetronomeControlRow",
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/settings/metronome_control_row.gd"
+}, {
+"base": "CustomControlRow",
+"class": "MoneyControlRow",
+"language": "GDScript",
+"path": "res://src/gui/control_rows/money_control_row.gd"
 }, {
 "base": "Behavior",
 "class": "MoveBackAndForthBehavior",
@@ -2889,6 +2899,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/surfacer/src/character/behaviors/wander_behavior.gd"
 }, {
+"base": "TextControlRow",
+"class": "WavesControlRow",
+"language": "GDScript",
+"path": "res://src/gui/control_rows/waves_control_row.gd"
+}, {
 "base": "Reference",
 "class": "Waypoint",
 "language": "GDScript",
@@ -2923,6 +2938,11 @@ _global_script_classes=[ {
 "class": "WorkerSpawnController",
 "language": "GDScript",
 "path": "res://src/worker_spawn_controller.gd"
+}, {
+"base": "TextControlRow",
+"class": "WorkersControlRow",
+"language": "GDScript",
+"path": "res://src/gui/control_rows/workers_control_row.gd"
 }, {
 "base": "Reference",
 "class": "_Debouncer",
@@ -3093,6 +3113,7 @@ _global_script_class_icons={
 "EdgesWithoutIncreasingJumpHeightGroupItemController": "",
 "ElementAnnotator": "",
 "EmptyStructure": "",
+"EnemiesControlRow": "",
 "Enemy": "",
 "EnemySpawn": "",
 "EnemySpawnController": "",
@@ -3231,6 +3252,7 @@ _global_script_class_icons={
 "Main": "res://addons/scaffolder/assets/images/editor_icons/star.png",
 "MainMenuScreen": "",
 "MetronomeControlRow": "",
+"MoneyControlRow": "",
 "MoveBackAndForthBehavior": "res://addons/surfacer/assets/images/editor_icons/move_back_and_forth_behavior.png",
 "MovementParameters": "res://addons/surfacer/assets/images/editor_icons/movement_params.png",
 "MovementUtils": "",
@@ -3526,6 +3548,7 @@ _global_script_class_icons={
 "WallFallAction": "",
 "WallJumpAction": "",
 "WanderBehavior": "res://addons/surfacer/assets/images/editor_icons/wander_behavior.png",
+"WavesControlRow": "",
 "Waypoint": "",
 "WaypointUtils": "",
 "WaypointValidity": "",
@@ -3533,6 +3556,7 @@ _global_script_class_icons={
 "WelcomePanelControlRow": "",
 "Worker": "",
 "WorkerSpawnController": "",
+"WorkersControlRow": "",
 "_Debouncer": "",
 "_Interval": "",
 "_Throttler": "",

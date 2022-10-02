@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cost_icon_small.png-cb87033255de1016056955f170e74a02.stex"
+path="res://.import/upgrade_overlay_button.png-280ca77cd52b68de353d54cf9ad81dd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/cost_icon_small.png"
-dest_files=[ "res://.import/cost_icon_small.png-cb87033255de1016056955f170e74a02.stex" ]
+source_file="res://assets/images/gui/overlay_buttons/upgrade_overlay_button.png"
+dest_files=[ "res://.import/upgrade_overlay_button.png-280ca77cd52b68de353d54cf9ad81dd5.stex" ]
 
 [params]
 

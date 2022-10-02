@@ -91,7 +91,7 @@ func _handle_shooting(target) -> void:
     if shooting_target == target:
         return
     shooting_target = target
-    shot_start_time = Sc.time.get_scaled_play_time()
+    shot_start_time = Game.scaled_play_time
     stop_on_surface()
 
 func _handle_not_shooting() -> void:
@@ -106,7 +106,7 @@ func _update_shooting() -> void:
     if !get_is_shooting():
         return
     
-    var shot_current_time := Sc.time.get_scaled_play_time()
+    var shot_current_time := Game.scaled_play_time
     
     if did_move_last_frame:
         shot_start_time = shot_current_time

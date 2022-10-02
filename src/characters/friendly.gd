@@ -94,6 +94,9 @@ func _physics_process(delta: float) -> void:
     
     if did_move_last_frame:
         _update_highlight_for_camera_position()
+    
+    if position.y > 4000:
+        position = Sc.level.base.get_center()
 
 
 func _on_level_started() -> void:

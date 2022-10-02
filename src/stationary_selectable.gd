@@ -54,7 +54,7 @@ func _set_up() -> void:
     
     self.monitorable = true
     
-    start_time = Sc.time.get_scaled_play_time()
+    start_time = Game.scaled_play_time
     total_time = 0.0
     
     var half_width_height: Vector2 = \
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
         return
     
     previous_total_time = total_time
-    total_time = Sc.time.get_scaled_play_time() - start_time
+    total_time = Game.scaled_play_time - start_time
 
 
 func _set_up_camera_detector() -> void:

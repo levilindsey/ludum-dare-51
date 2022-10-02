@@ -47,14 +47,20 @@ func set_up(entity) -> void:
     
     # Render command rows.
     var commands: Array = entity._get_radial_menu_item_types()
+    var is_a_command_rendered := false
     for command in commands:
         if command == CommandType.BUILDING_INFO or \
                 command == CommandType.FRIENDLY_INFO:
             continue
+        is_a_command_rendered = true
         var row: InfoPanelCommandRow = \
             Sc.utils.add_scene($Commands, _INFO_PANEL_COMMAND_ROW_SCENE)
         row.set_up(command)
         command_rows.push_back(row)
+    if !is_a_command_rendered:
+        $Commands.visible = false
+        $CommandsLabel.visible = false
+        $CommandsSeparator.visible = false
     
     $Status/HealthLabel.entity = entity
     $Status/HealthLabel.set_up()

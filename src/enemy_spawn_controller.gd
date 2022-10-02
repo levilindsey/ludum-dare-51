@@ -23,6 +23,7 @@ func _physics_process(_delta: float) -> void:
     if Game.cooldown_count != previous_cooldown_count:
         previous_cooldown_count = Game.cooldown_count
         trigger_spawn()
+        Sc.level.session.wave_count += 1
 
 
 func trigger_spawn() -> void:

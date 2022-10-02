@@ -288,7 +288,8 @@ var _gui_manifest := {
     
     display_time_type = TimeType.PLAY_PHYSICS_SCALED,
     
-    welcome_panel_scene = [TYPE_PACKED_SCENE, null],
+    welcome_panel_scene = preload(
+        "res://addons/scaffolder/src/gui/welcome_panel.tscn"),
     main_menu_image_scene = preload("res://src/gui/loading_image.tscn"),
     game_over_image_scene = preload("res://src/gui/loading_image.tscn"),
     loading_image_scene = preload("res://src/gui/loading_image.tscn"),
@@ -317,12 +318,17 @@ var _gui_manifest := {
 #        LongestTimeControlRow,
 #        ScoreControlRow,
 #        HighScoreControlRow,
+        WavesControlRow,
+        WorkersControlRow,
+        EnemiesControlRow,
+        MoneyControlRow,
     ],
     game_over_item_manifest = [
 #        FastestTimeControlRow,
 #        LongestTimeControlRow,
         TimeControlRow,
         LevelControlRow,
+        WavesControlRow,
     ],
     level_select_item_manifest = [
         TotalPlaysControlRow,
@@ -337,6 +343,30 @@ var _gui_manifest := {
                 item_class = TimeControlRow,
                 settings_enablement_label = "Time",
                 enabled_by_default = false,
+                settings_group_key = "hud",
+            },
+            {
+                item_class = WavesControlRow,
+                settings_enablement_label = "Waves survived",
+                enabled_by_default = true,
+                settings_group_key = "hud",
+            },
+            {
+                item_class = WorkersControlRow,
+                settings_enablement_label = "Workers",
+                enabled_by_default = true,
+                settings_group_key = "hud",
+            },
+            {
+                item_class = EnemiesControlRow,
+                settings_enablement_label = "Enemies",
+                enabled_by_default = true,
+                settings_group_key = "hud",
+            },
+            {
+                item_class = MoneyControlRow,
+                settings_enablement_label = "Money",
+                enabled_by_default = true,
                 settings_group_key = "hud",
             },
         ],
@@ -363,12 +393,11 @@ var _gui_manifest := {
             ColorFactory.palette("modulation_button_disabled"),
     },
     welcome_panel_manifest = {
-        # FIXME: -------------
+#        is_header_shown = true,
         items = [
-#            ["Select bot", "Hold Q/W/E/A/S/D"],
-#            ["Move bot", "L-click on platform"],
-#            ["CommandType bot", "L-click on button"],
-#            ["Cancel command", "R-click"],
+            ["Move", "AWSD / Arrows"],
+            ["Jump", "Space"],
+            ["Select/Command unit", "L-click"],
             ["Zoom in/out", "Scroll-wheel"],
         ],
     },
