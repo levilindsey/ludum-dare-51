@@ -6,7 +6,8 @@ func _physics_process(_delta: float) -> void:
     if Engine.editor_hint:
         return
     
-    # FIXME: --------------
+    # FIXME: LEFT OFF HERE: -------------------------
+    # FIXME: --------------: Iterate across projectiles on level and update physics
     pass
 
 

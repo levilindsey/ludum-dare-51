@@ -247,6 +247,24 @@ func quit(
 #    .on_unpause()
 
 
+var previous_music_position := -1.0
+
+func _physics_process(_delta: float) -> void:
+    if Engine.editor_hint:
+        return
+    
+    # Sync music (only twice at start and middle of song).
+    var music_position := \
+        fmod(Game.scaled_play_time + 0.2, Game.THEORETICAL_MUSIC_DURATION)
+    var is_music_position_halfway := \
+        music_position > Game.THEORETICAL_MUSIC_DURATION / 2.0
+    var was_music_position_halfway := \
+        previous_music_position > Game.THEORETICAL_MUSIC_DURATION / 2.0
+    if is_music_position_halfway != was_music_position_halfway:
+        previous_music_position = music_position
+        Sc.audio.seek(music_position)
+
+
 func _unhandled_input(event: InputEvent) -> void:
     if (event is InputEventScreenTouch or \
             event is InputEventMouseButton) and \
@@ -290,6 +308,7 @@ func _on_friendly_selection_changed(
         friendly: Friendly,
         is_selected: bool) -> void:
     if is_selected:
+        # Deselect any previously selected friendly.
         # Deselect any previously selected friendly.
         if is_instance_valid(selected_friendly):
             if friendly == selected_friendly:
@@ -847,7 +866,7 @@ func _update_session_counts() -> void:
 
 func get_music_name() -> String:
     # FIXME: -------------------
-    return "on_a_quest"
+    return "fight-the-beat"
 
 
 func get_slow_motion_music_name() -> String:

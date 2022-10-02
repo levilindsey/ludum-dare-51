@@ -1749,6 +1749,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/projectile_controller.gd"
 }, {
+"base": "Reference",
+"class": "ProjectileSpeeds",
+"language": "GDScript",
+"path": "res://src/config/projectile_speeds.gd"
+}, {
 "base": "Node2D",
 "class": "ProximityDetector",
 "language": "GDScript",
@@ -2719,6 +2724,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/screens/third_party_licenses_screen.gd"
 }, {
+"base": "Reference",
+"class": "ThrowUtils",
+"language": "GDScript",
+"path": "res://src/throw_utils.gd"
+}, {
 "base": "Node",
 "class": "TileAnnotationsParser",
 "language": "GDScript",
@@ -3283,6 +3293,7 @@ _global_script_class_icons={
 "ProfilerTimingItemController": "",
 "Projectile": "",
 "ProjectileController": "",
+"ProjectileSpeeds": "",
 "ProximityDetector": "res://addons/scaffolder/assets/images/editor_icons/proximity_detector.png",
 "QuadrantShapeType": "",
 "RadialMenu": "",
@@ -3477,6 +3488,7 @@ _global_script_class_icons={
 "TextureOutlineableSprite": "res://addons/scaffolder/assets/images/editor_icons/outlineable_sprite.png",
 "ThirdPartyLicenses": "",
 "ThirdPartyLicensesScreen": "",
+"ThrowUtils": "",
 "TileAnnotationsParser": "",
 "TileAnnotationsRecorder": "",
 "TileShapeData": "",

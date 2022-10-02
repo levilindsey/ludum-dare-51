@@ -3,6 +3,8 @@ class_name Enemy
 extends SurfacerCharacter
 
 
+export var projectile_launch_offset := Vector2.ZERO
+
 var status_overlay: StatusOverlay
 
 var entity_command_type := CommandType.UNKNOWN
@@ -409,3 +411,44 @@ func _on_behavior_changed(
         behavior: Behavior,
         previous_behavior: Behavior) -> void:
     pass
+
+
+func get_projectile_launch_position() -> Vector2:
+    return position + \
+        projectile_launch_offset * \
+        Vector2(surface_state.horizontal_facing_sign, 1.0)
+
+
+func _shoot_at_target(target) -> void:
+    # FIXME: LEFT OFF HERE: ------------------------
+    
+    # FIXME: ----- Check if the target has a velocity and if the horizontal velocity is greater than some threshold; if so, add an offset to the shot
+    
+    var projectile_type := \
+        Projectile.get_projectile_type_for_command_type(entity_command_type)
+    
+    var tower_upgrade_type := UpgradeType.UNKNOWN
+    var start_speed := ProjectileSpeeds.get_speed(
+        entity_command_type,
+        upgrade_type,
+        tower_upgrade_type)
+    
+    var start_position := get_projectile_launch_position()
+    
+    var start_velocity := ThrowUtils.calculate_start_velocity(
+        start_speed,
+        Su.movement.gravity_default,
+        start_position,
+        target)
+    
+    if start_velocity == Vector2.INF:
+        # Target is out of reach, so fall-back to a 45-degree angle to shoot
+        # pretty far toward the target.
+        start_velocity = Vector2.RIGHT.rotated(PI / 4.0)
+        if target.x < start_position.x:
+            start_velocity.x *= -1.0
+    
+    Sc.level.add_projectile(
+        projectile_type,
+        start_position,
+        start_velocity)

@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/characters/worker/worker.gd" type="Script" id=1]
 [ext_resource path="res://addons/surfacer/src/platform_graph/edge/models/movement_parameters.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/characters/worker/worker_animator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/surfacer/src/character/behaviors/wander_behavior.tscn" type="PackedScene" id=5]
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 6, 11.5 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 11.5
@@ -16,6 +13,7 @@ collision_layer = 8
 script = ExtResource( 1 )
 character_name = "worker"
 collision_detection_layers = 256
+projectile_launch_offset = Vector2( 4, 2 )
 primary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
 
 secondary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
@@ -41,7 +39,7 @@ logs_verbose_navigator_events = false
 stores_logs_on_character_instances = false
 
 [node name="MovementParameters" parent="." instance=ExtResource( 2 )]
-collider_shape = SubResource( 3 )
+collider_shape = SubResource( 4 )
 character_category_name = "worker"
 __movement_params_identifier__ = "_"
 can_target_in_air_destinations = false

@@ -60,20 +60,20 @@ var _music_manifest := [
     # NOTE:
     # -   I'm hacking this a bit.
     # -   BPMs are used as a seconds tracker, and aren't actually accurate.
-    # {
-    #     name = "my_music",
-    #     path_prefix = "res://assets/music/",
-    #     volume_db = 0.0,
-    #     bpm = 75.0,
-    #     meter = 4,
-    # },
-    # {
-    #     name = "my_pause_music",
-    #     path_prefix = "res://assets/music/",
-    #     volume_db = 0.0,
-    #     bpm = 75.0,
-    #     meter = 4,
-    # },
+    {
+        name = "await-judgement",
+        path_prefix = "res://assets/music/",
+        volume_db = 0.0,
+        bpm = 240.0,
+        meter = 4,
+    },
+    {
+        name = "fight-the-beat",
+        path_prefix = "res://assets/music/",
+        volume_db = 0.0,
+        bpm = 240.0,
+        meter = 10,
+    },
 ]
 
 var _sounds_manifest := [
@@ -92,6 +92,11 @@ var _sounds_manifest := [
         volume_db = 0.0,
         path_prefix = "",
     },
+    {
+        name = "cadence",
+        volume_db = 0.0,
+        path_prefix = "",
+    },
 ]
 
 var _audio_manifest := {
@@ -106,14 +111,14 @@ var _audio_manifest := {
     default_music_bus_index = 2,
     
     godot_splash_sound = "achievement",
-    developer_splash_sound = "single_cat_snore",
-    level_end_sound_win = "cadence_win",
-    level_end_sound_lose = "cadence_lose",
+    developer_splash_sound = "cadence",
+    level_end_sound_win = "cadence",
+    level_end_sound_lose = "cadence",
     
-    main_menu_music = "on_a_quest",
-    game_over_music = "pause_menu",
-    pause_menu_music = "pause_menu",
-    default_level_music = "on_a_quest",
+    main_menu_music = "await-judgement",
+    game_over_music = "await-judgement",
+    pause_menu_music = "await-judgement",
+    default_level_music = "fight-the-beat",
     
     pauses_level_music_on_pause = true,
     

@@ -11,6 +11,8 @@ const MAX_OPACITY_MULTIPLIER := 1.0
 
 const POINTER_DISTANCE_SQUARED_OFFSET_FOR_SELECTION_PRIORITY := 30.0 * 30.0
 
+export var projectile_launch_offset := Vector2.ZERO
+
 var status_overlay: StatusOverlay
 
 var entity_command_type := CommandType.UNKNOWN
@@ -357,3 +359,9 @@ func modify_health(diff: int) -> void:
 
 func _on_health_depleted() -> void:
     pass
+
+
+func get_projectile_launch_position() -> Vector2:
+    return position + \
+        projectile_launch_offset * \
+        Vector2(surface_state.horizontal_facing_sign, 1.0)

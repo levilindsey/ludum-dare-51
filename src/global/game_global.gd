@@ -4,6 +4,7 @@ extends SurfacerFrameworkGlobal
 
 
 const COOLDOWN_TIME := 10.0
+const THEORETICAL_MUSIC_DURATION := 80.0
 
 const _SCHEMA_PATH := "res://src/config/game_schema.gd"
 

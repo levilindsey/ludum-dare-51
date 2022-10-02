@@ -19,6 +19,8 @@ var unit_upgrade_multiplier := 1.0
 
 var damage: int setget ,_get_damage
 
+var velocity := Vector2.INF
+
 
 func _get_damage_for_projectile_type() -> float:
     match projectile_type:
@@ -42,3 +44,19 @@ func _get_damage() -> int:
 
 func _on_collided_with_enemy(character) -> void:
     Sc.level.remove_projectile(self)
+
+
+static func get_projectile_type_for_command_type(command_type: int) -> int:
+    match command_type:
+        CommandType.HERO, \
+        CommandType.SMALL_WORKER, \
+        CommandType.MEDIUM_WORKER, \
+        CommandType.LARGE_WORKER:
+            return FRIENDLY
+        CommandType.ENEMY_SMALL:
+            return SMALL_ENEMY
+        CommandType.ENEMY_LARGE:
+            return LARGE_ENEMY
+        _:
+            Sc.logger.error("Projectile.get_projectile_type_for_command_type")
+            return UNKNOWN

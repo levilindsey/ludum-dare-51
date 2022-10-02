@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fight-the-beat.ogg-deb6635f49564fd2aa10741ebf7e927f.oggstr"
+
+[deps]
+
+source_file="res://assets/music/fight-the-beat.ogg"
+dest_files=[ "res://.import/fight-the-beat.ogg-deb6635f49564fd2aa10741ebf7e927f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

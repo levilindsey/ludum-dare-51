@@ -16,6 +16,7 @@ character_name = "hero"
 collision_detection_layers = 256
 pointer_screen_radius = 28.8
 pointer_distance_squared_offset_for_selection_priority = 900.0
+projectile_launch_offset = Vector2( 5, 3 )
 primary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"black","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
 
 secondary_annotation_color = Object(Reference,"script":Resource( "res://addons/scaffolder/src/config/color_config/palette_color_config.gd" ),"h":0.0,"s":0.0,"v":0.0,"a":0.0,"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0,"override_color":Color( -1, -2, -2, -1 ),"delta_color":Color( 0, 0, 0, 0 ),"key":"white","_h_override":-1.0,"_s_override":-1.0,"_v_override":-1.0,"_a_override":-1.0,"h_delta":0.0,"s_delta":0.0,"v_delta":0.0,"a_delta":0.0)
