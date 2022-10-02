@@ -604,7 +604,7 @@ func add_worker(worker_type: int) -> Worker:
             return null
     var worker: Worker = add_character(
             worker_scene,
-            base.position + Vector2(0, -4),
+            base.get_center(),
             true,
             false,
             true)

@@ -30,7 +30,7 @@ func trigger_spawn() -> void:
         int(randf() * 0.99999 * Sc.level.enemy_spawn_points.size())
     var spawn_point: EnemySpawn = \
         Sc.level.enemy_spawn_points[spawn_point_index]
-    var spawn_position := spawn_point.position + Vector2(0, -4)
+    var spawn_position := spawn_point.get_center()
     
     var remaining_tiers := Game.cooldown_count
     var current_tier := remaining_tiers % _MAX_TIER

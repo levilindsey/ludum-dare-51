@@ -385,7 +385,7 @@ animations = {
 
 [node name="Walk" parent="." instance=ExtResource( 11 )]
 visible = false
-position = Vector2( 0, -15 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 10 )
 hframes = 8
 normal_texture = ExtResource( 10 )
@@ -435,7 +435,7 @@ outlined_texture = ExtResource( 12 )
 
 [node name="JumpFall" parent="." instance=ExtResource( 11 )]
 visible = false
-position = Vector2( 2, -13 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 10 )
 hframes = 8
 normal_texture = ExtResource( 10 )
@@ -443,7 +443,7 @@ outlined_texture = ExtResource( 12 )
 
 [node name="JumpRise" parent="." instance=ExtResource( 11 )]
 visible = false
-position = Vector2( -1, -11 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 10 )
 hframes = 8
 normal_texture = ExtResource( 10 )
@@ -451,7 +451,7 @@ outlined_texture = ExtResource( 12 )
 
 [node name="Build" parent="." instance=ExtResource( 11 )]
 visible = false
-position = Vector2( 5, -18 )
+position = Vector2( 0, -16 )
 texture = ExtResource( 10 )
 hframes = 8
 normal_texture = ExtResource( 10 )

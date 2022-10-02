@@ -5,8 +5,8 @@
 [ext_resource path="res://src/characters/worker/worker_animator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/surfacer/src/character/behaviors/wander_behavior.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 16.0
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6, 11.5 )
 
 [node name="Worker" type="KinematicBody2D"]
 collision_layer = 8
@@ -38,13 +38,11 @@ logs_verbose_navigator_events = false
 stores_logs_on_character_instances = false
 
 [node name="MovementParameters" parent="." instance=ExtResource( 2 )]
-collider_shape = SubResource( 2 )
-collider_rotation = 1.5708
+collider_shape = SubResource( 3 )
 character_category_name = "worker"
 __movement_params_identifier__ = "_"
 can_target_in_air_destinations = false
-surface_speed_multiplier = 0.4
-air_horizontal_speed_multiplier = 1.0
+surface_speed_multiplier = 0.25
 walk_acceleration_multiplier = 0.7
 in_air_horizontal_acceleration_multiplier = 1.2
 climb_up_speed_multiplier = 1.2
@@ -54,20 +52,18 @@ friction_coefficient_multiplier = 1.1
 jump_boost_multiplier = 0.8
 max_horizontal_speed_default_multiplier = 1.5
 max_jump_chain = 2
-move_to_collinear_surface_edge_weight_multiplier_override = -1.0
 air_edge_weight_multiplier_override = 10.0
 optimizes_edge_jump_positions_at_run_time = false
 also_optimizes_preselection_path = false
 includes_discrete_trajectory_state = false
 collision_margin_for_edge_calculations = 1.0
 collision_margin_for_waypoint_positions = 4.0
-oblique_collison_normal_aspect_ratio_threshold = 10.0
 
 [node name="WorkerAnimator" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 2 )
+position = Vector2( 0, -11.5 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
