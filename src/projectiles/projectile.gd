@@ -42,10 +42,15 @@ func _get_damage_for_projectile_type() -> float:
 
 
 func _get_damage() -> int:
+    var base_upgrade_multiplier: float = \
+        Sc.level.session.get_damage_multiplier() if \
+        projectile_type == FRIENDLY else \
+        1.0
     return int(
         _get_damage_for_projectile_type() *
         tower_multiplier *
-        unit_upgrade_multiplier)
+        unit_upgrade_multiplier * 
+        base_upgrade_multiplier)
 
 
 static func get_projectile_type_for_command_type(command_type: int) -> int:

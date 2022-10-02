@@ -284,12 +284,12 @@ func _on_radial_menu_closed() -> void:
 
 func _process_sounds() -> void:
     if just_triggered_jump:
-        Sc.audio.play_sound("test_character_jump")
+        Sc.audio.play_sound("jump")
     
     if surface_state.just_left_air:
-        Sc.audio.play_sound("test_character_land")
+        Sc.audio.play_sound("land")
     elif surface_state.just_touched_surface:
-            Sc.audio.play_sound("test_character_land")
+            Sc.audio.play_sound("land")
 
 
 func _get_radial_menu_item_types() -> Array:

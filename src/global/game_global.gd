@@ -67,7 +67,7 @@ func _get_manifest_overrides() -> Array:
         ["Sc.manifest.metadata.debug", debug, "release"],
         ["Sc.manifest.metadata.playtest", playtest, "release"],
         ["Sc.manifest.metadata.rng_seed", 723],
-        ["Sc.manifest.metadata.pauses_on_focus_out", false],
+        ["Sc.manifest.metadata.pauses_on_focus_out", true],
         ["Sc.manifest.metadata.also_prints_to_stdout", true],
         ["Sc.manifest.metadata.logs_character_events", true],
         ["Sc.manifest.metadata.logs_analytics_events", false],
@@ -77,9 +77,9 @@ func _get_manifest_overrides() -> Array:
         ["Sc.manifest.metadata.are_all_levels_unlocked", true],
         ["Sc.manifest.metadata.are_test_levels_included", true],
         ["Sc.manifest.metadata.is_save_state_cleared_for_debugging", false],
-        ["Sc.manifest.metadata.opens_directly_to_level_id", "0"],
-#        ["Sc.manifest.metadata.opens_directly_to_level_id", ""],
-        ["Sc.manifest.metadata.is_splash_skipped", true],
+#        ["Sc.manifest.metadata.opens_directly_to_level_id", "0"],
+        ["Sc.manifest.metadata.opens_directly_to_level_id", ""],
+        ["Sc.manifest.metadata.is_splash_skipped", false],
         ["Sc.manifest.metadata.are_button_controls_enabled_by_default", true],
         
         ["Su.manifest.are_loaded_surfaces_deeply_validated", false],
@@ -101,7 +101,7 @@ func _get_manifest_overrides() -> Array:
         ["Sc.manifest.gui_manifest.debug_window_size", debug_window_size],
         ["Sc.manifest.gui_manifest.moves_debug_game_window_to_other_monitor",
             moves_debug_game_window_to_other_monitor],
-        ["Sc.manifest.gui_manifest.hud_manifest.is_inspector_enabled_default", true],
+        ["Sc.manifest.gui_manifest.hud_manifest.is_inspector_enabled_default", false],
         ["Sc.manifest.gui_manifest.hud_manifest.is_hud_visible_by_default", true],
     ])
     

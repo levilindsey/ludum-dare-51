@@ -26,6 +26,8 @@ var projectiles_collided_count := 0
 
 var wave_count := 0
 
+var base_upgrade_count := 0
+
 
 func reset(id: String) -> void:
     .reset(id)
@@ -53,3 +55,21 @@ func reset(id: String) -> void:
     projectiles_collided_count = 0
     
     wave_count = 0
+    
+    base_upgrade_count = 0
+
+
+func get_damage_multiplier() -> float:
+    return pow(1.2, Sc.level.session.base_upgrade_count)
+
+
+func get_interval_multiplier() -> float:
+    return pow(1.2, Sc.level.session.base_upgrade_count)
+
+
+func get_range_multiplier() -> float:
+    return pow(1.2, Sc.level.session.base_upgrade_count)
+
+
+func get_health_multiplier() -> float:
+    return pow(1.2, Sc.level.session.base_upgrade_count)

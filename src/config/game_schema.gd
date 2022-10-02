@@ -30,7 +30,7 @@ var _metadata := {
     are_button_controls_enabled_by_default = false,
     base_path = "",
     
-    app_name = "Ludum Dare 51",
+    app_name = "Village Defender",
     app_id = "dev.levi.ludum_dare_51",
     app_version = "0.0.1",
     score_version = "0.0.1",
@@ -78,17 +78,17 @@ var _music_manifest := [
 
 var _sounds_manifest := [
     {
-        name = "test_character_jump",
+        name = "jump",
         volume_db = 0.0,
         path_prefix = "",
     },
     {
-        name = "test_character_land",
+        name = "land",
         volume_db = 0.0,
         path_prefix = "",
     },
     {
-        name = "test_character_hit_surface",
+        name = "land",
         volume_db = 0.0,
         path_prefix = "",
     },
@@ -179,13 +179,11 @@ var _images_manifest_pixelated := {
     app_logo = preload("res://assets/images/logos/logo.png"),
     app_logo_scale = 1.0,
     
-    developer_logo = preload(
-            "res://addons/scaffolder/assets/images/logos/snoring_cat_logo_about.png"),
-    developer_splash = preload(
-            "res://addons/scaffolder/assets/images/logos/snoring_cat_logo_splash.png"),
+    developer_logo = preload("res://assets/images/logos/levi_logo_about.png"),
+    developer_splash = preload("res://assets/images/logos/levi_logo_splash.png"),
     
-    go_normal = preload("res://assets/images/gui/go_icon.png"),
-    go_scale = 1.5,
+    go_normal = preload("res://assets/images/logos/go_icon.png"),
+    go_scale = 4.0,
     
     about_circle_pressed = preload(
             "res://addons/scaffolder/assets/images/gui/icons/about_circle_pressed.png"),

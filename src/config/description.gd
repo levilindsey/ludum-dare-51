@@ -234,10 +234,10 @@ const COMMAND_DESCRIPTIONS := {
         "Builds a small base.",
     ],
     MEDIUM_BASE = [
-        "Upgrades your base. A better base allows better worker and structure upgrades.",
+        "Upgrades your base. A better base provides more health and attack.",
     ],
     LARGE_BASE = [
-        "Upgrades your base. A better base allows better worker and structure upgrades.",
+        "Upgrades your base. A better base provides more health and attack.",
     ],
     SMALL_TOWER = [
         "Builds a guard tower, which defends against monsters.",

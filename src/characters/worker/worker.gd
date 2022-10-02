@@ -413,12 +413,12 @@ func _get_radial_menu_item_types() -> Array:
     var types := [
     ]
     match entity_command_type:
-        CommandType.SMALL_WORKER:
-            types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
-        CommandType.MEDIUM_WORKER:
-            types.push_back(CommandType.FRIENDLY_MEDIUM_UPGRADE)
-        CommandType.LARGE_WORKER:
-            pass
+#        CommandType.SMALL_WORKER:
+#            types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
+#        CommandType.MEDIUM_WORKER:
+#            types.push_back(CommandType.FRIENDLY_MEDIUM_UPGRADE)
+#        CommandType.LARGE_WORKER:
+#            pass
         _:
             Sc.logger.error("Worker._get_common_radial_menu_item_types")
     types.push_back(CommandType.FRIENDLY_INFO)
@@ -496,9 +496,9 @@ func _on_vacated_building() -> void:
 
 func _process_sounds() -> void:
     if just_triggered_jump:
-        Sc.audio.play_sound("test_character_jump")
+        Sc.audio.play_sound("land")
     
     if surface_state.just_left_air:
-        Sc.audio.play_sound("test_character_land")
+        Sc.audio.play_sound("land")
     elif surface_state.just_touched_surface:
-        Sc.audio.play_sound("test_character_hit_surface")
+        Sc.audio.play_sound("land")

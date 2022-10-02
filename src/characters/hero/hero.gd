@@ -139,12 +139,12 @@ func _on_health_depleted() -> void:
 
 func _process_sounds() -> void:
     if just_triggered_jump:
-        Sc.audio.play_sound("test_character_jump")
+        Sc.audio.play_sound("jump")
     
     if surface_state.just_left_air:
-        Sc.audio.play_sound("test_character_land")
+        Sc.audio.play_sound("land")
     elif surface_state.just_touched_surface:
-        Sc.audio.play_sound("test_character_hit_surface")
+        Sc.audio.play_sound("land")
 
 
 func _on_radial_menu_item_selected(item: RadialMenuItem) -> void:

@@ -145,7 +145,17 @@ func _upgrade_building(button_type: int) -> void:
         CommandType.BUILDING_BASE_SMALL_UPGRADE, \
         CommandType.MEDIUM_BASE:
             assert(entity_command_type == CommandType.SMALL_BASE)
-            new_building_type = CommandType.MEDIUM_BASE
+#            new_building_type = CommandType.MEDIUM_BASE
+            Sc.level.session.base_upgrade_count += 1
+            
+            for collection in [[Sc.level.hero], Sc.level.workers, Sc.level.enemies, Sc.level.buildings]:
+                for unit in collection:
+                    # FIXME: -------------------------
+                    unit._health *= 1.2
+                    unit._health_capacity *= 1.2
+            
+            
+            
         CommandType.BUILDING_BASE_MEDIUM_UPGRADE, \
         CommandType.LARGE_BASE:
             assert(entity_command_type == CommandType.MEDIUM_BASE)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_progress_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_label.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_s.tres" type="DynamicFont" id=4]
-[ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_m.tres" type="DynamicFont" id=5]
 [ext_resource path="res://src/gui/ld_loading_screen.gd" type="Script" id=6]
 
 [node name="LoadingScreen" type="VBoxContainer"]
@@ -53,8 +52,7 @@ margin_right = 460.0
 margin_bottom = 49.0
 rect_min_size = Vector2( 320, 0 )
 custom_fonts/font = ExtResource( 4 )
-text = "TODO: Add descriptive text here!"
-align = 3
+text = "You must lead the village the defend against relentless waves of monsters!"
 valign = 0
 autowrap = true
 font_size = "S"
@@ -80,7 +78,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 460.0
 margin_bottom = 39.0
-custom_fonts/font = ExtResource( 5 )
 text = "Tap to continue."
 autowrap = true
 
@@ -118,7 +115,6 @@ margin_top = 18.0
 margin_right = 160.0
 margin_bottom = 57.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
 valign = 0
 
 [node name="Label1" parent="VBoxContainer/LoadingProgress" instance=ExtResource( 3 )]
@@ -129,7 +125,6 @@ margin_top = 61.0
 margin_right = 160.0
 margin_bottom = 100.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
 valign = 0
 
 [node name="Label2" parent="VBoxContainer/LoadingProgress" instance=ExtResource( 3 )]
@@ -140,5 +135,4 @@ margin_top = 104.0
 margin_right = 160.0
 margin_bottom = 143.0
 size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 5 )
 valign = 0

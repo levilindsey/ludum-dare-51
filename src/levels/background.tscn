@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/background/background_near.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/background/background_far.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/tiles/background_back.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/tiles/background_far.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/tiles/background_near.png" type="Texture" id=3]
 
 [node name="Background" type="ParallaxBackground"]
 
-[node name="Far" type="ParallaxLayer" parent="."]
+[node name="Back" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.1, 0.1 )
+
+[node name="Sprite" type="Sprite" parent="Back"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2048, 2048 )
+
+[node name="Far" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" type="Sprite" parent="Far"]
 texture = ExtResource( 2 )
@@ -14,9 +23,9 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 2048 )
 
 [node name="Near" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.8, 0.8 )
+motion_scale = Vector2( 0.6, 0.6 )
 
 [node name="Sprite" type="Sprite" parent="Near"]
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 2048 )
