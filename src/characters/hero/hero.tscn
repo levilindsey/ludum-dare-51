@@ -55,6 +55,7 @@ character_category_name = "hero"
 __movement_params_identifier__ = "_"
 can_target_in_air_destinations = false
 surface_speed_multiplier = 0.7
+air_horizontal_speed_multiplier = 1.0
 walk_acceleration_multiplier = 1.2
 climb_up_speed_multiplier = 1.2
 climb_down_speed_multiplier = 1.2
@@ -63,12 +64,14 @@ friction_coefficient_multiplier = 1.1
 jump_boost_multiplier = 0.8
 max_horizontal_speed_default_multiplier = 1.5
 max_jump_chain = 2
+move_to_collinear_surface_edge_weight_multiplier_override = -1.0
 air_edge_weight_multiplier_override = 10.0
 collision_margin_for_edge_calculations = 1.0
 collision_margin_for_waypoint_positions = 4.0
 oblique_collison_normal_aspect_ratio_threshold = 10.0
 
 [node name="HeroAnimator" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 16.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

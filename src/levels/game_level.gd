@@ -652,7 +652,7 @@ func add_enemy(
     match enemy_type:
         CommandType.ENEMY_SMALL:
             enemy_scene = _SMALL_ENEMY_SCENE
-        CommandType.LARGE_ENEMY:
+        CommandType.ENEMY_LARGE:
             enemy_scene = _LARGE_ENEMY_SCENE
         _:
             Sc.logger.error("GameLevel.add_enemy")
