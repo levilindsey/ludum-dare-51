@@ -13,7 +13,6 @@ height = 17.0
 collision_layer = 8
 script = ExtResource( 3 )
 character_name = "hero"
-collision_detection_layers = 256
 pointer_screen_radius = 28.8
 pointer_distance_squared_offset_for_selection_priority = 900.0
 projectile_launch_offset = Vector2( 5, 3 )

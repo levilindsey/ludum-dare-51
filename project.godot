@@ -824,6 +824,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scaffolder/src/gui/control_rows/displays/fastest_time_control_row.gd"
 }, {
+"base": "Area2D",
+"class": "FiringRange",
+"language": "GDScript",
+"path": "res://src/firing_range.gd"
+}, {
 "base": "CharacterActionHandler",
 "class": "FloorDashAction",
 "language": "GDScript",
@@ -3108,6 +3113,7 @@ _global_script_class_icons={
 "FallRangeWithoutJumpDistanceLegendItem": "",
 "FallbackSubtileCorners": "",
 "FastestTimeControlRow": "",
+"FiringRange": "",
 "FloorDashAction": "",
 "FloorDefaultAction": "",
 "FloorFallThroughAction": "",

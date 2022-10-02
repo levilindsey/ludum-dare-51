@@ -244,9 +244,6 @@ func _on_started_colliding(
         target: Node2D,
         layer_names: Array) -> void:
     match layer_names[0]:
-        "enemy_projectile":
-            target._on_collided_with_friendly(self)
-            _on_hit_by_projectile(target)
         _:
             Sc.logger.error("Friendly._on_started_colliding: layer_names=%s" % \
                     str(layer_names))

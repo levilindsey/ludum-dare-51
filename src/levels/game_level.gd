@@ -600,7 +600,7 @@ func _get_worker_for_command(command: Command) -> Worker:
 
 
 func on_worker_idleness_changed(worker: Worker) -> void:
-    if !worker.get_is_active():
+    if !worker.get_is_active() and !worker.get_is_shooting():
         if !idle_workers.has(worker):
             idle_workers[worker] = true
             _try_next_command()
@@ -611,13 +611,17 @@ func on_worker_idleness_changed(worker: Worker) -> void:
 
 func add_worker(worker_type: int) -> Worker:
     var worker_scene: PackedScene
+    var upgrade_type: int
     match worker_type:
         CommandType.SMALL_WORKER:
             worker_scene = _FRIENDLY_SMALL_WORKER_SCENE
+            upgrade_type = UpgradeType.MINOR
         CommandType.MEDIUM_WORKER:
             worker_scene = _FRIENDLY_MEDIUM_WORKER_SCENE
+            upgrade_type = UpgradeType.MODERATE
         CommandType.LARGE_WORKER:
             worker_scene = _FRIENDLY_LARGE_WORKER_SCENE
+            upgrade_type = UpgradeType.MAJOR
         _:
             Sc.logger.error("GameLevel.add_worker")
             return null
@@ -627,7 +631,8 @@ func add_worker(worker_type: int) -> Worker:
             true,
             false,
             true)
-    worker.worker_type = worker_type
+    worker.entity_command_type = worker_type
+    worker.upgrade_type = upgrade_type
     
     workers.push_back(worker)
     

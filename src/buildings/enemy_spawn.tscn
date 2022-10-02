@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://addons/scaffolder/src/shader_outlineable_animated_sprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/enemy_spawn.png" type="Texture" id=2]
 [ext_resource path="res://src/buildings/enemy_spawn.gd" type="Script" id=3]
+[ext_resource path="res://src/firing_range.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -141,7 +142,8 @@ animations = [ {
 } ]
 
 [node name="EnemySpawn" type="Area2D"]
-collision_layer = 1073741825
+collision_layer = 1073741888
+collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource( 3 )
@@ -158,3 +160,5 @@ __meta__ = {
 
 [node name="Center" type="Position2D" parent="."]
 position = Vector2( 0, -31 )
+
+[node name="FiringRange" parent="." instance=ExtResource( 4 )]

@@ -3,9 +3,11 @@ class_name Worker
 extends Friendly
 
 
+const _FIRING_RANGE_SCENE := preload("res://src/firing_range.tscn")
+
 const ENTITY_COMMAND_TYPE := CommandType.SMALL_WORKER
 
-var worker_type: int
+var upgrade_type := UpgradeType.UNKNOWN
 
 var command: Command
 
@@ -13,6 +15,16 @@ var triggers_command_when_landed := false
 var triggers_wander_when_landed := false
 
 var _stationary_frames_count_with_command_active := 0
+
+var firing_range: FiringRange
+
+var shooting_target = null
+
+var firing_targets := {}
+
+var firing_interval := INF
+
+var shot_start_time := -1.0
 
 
 func _init().(ENTITY_COMMAND_TYPE) -> void:
@@ -23,7 +35,89 @@ func _ready() -> void:
     navigator.connect("navigation_started", self, "_on_navigation_started")
     navigator.connect("navigation_ended", self, "_on_navigation_ended")
     
+    _set_up_firing_range()
+    
     _walk_to_side_of_base()
+
+
+func _set_up_firing_range() -> void:
+    firing_range = Sc.utils.add_scene(self, _FIRING_RANGE_SCENE)
+    firing_range.entity_command_type = entity_command_type
+    firing_range.upgrade_type = upgrade_type
+    firing_range.set_up()
+    firing_range.connect("area_entered", self, "_on_area_entered_firing_range")
+    firing_range.connect("body_entered", self, "_on_body_entered_firing_range")
+    firing_range.connect("area_exited", self, "_on_area_exit_firing_range")
+    firing_range.connect("body_exited", self, "_on_body_exit_firing_range")
+    
+    var projectile_type := \
+        Projectile.get_projectile_type_for_command_type(entity_command_type)
+    
+    var tower_upgrade_type := UpgradeType.UNKNOWN
+    firing_interval = ProjectileSpeeds.get_interval(
+        entity_command_type,
+        upgrade_type,
+        tower_upgrade_type)
+
+func _on_area_entered_firing_range(area) -> void:
+    assert(area.has("entity_command_type"))
+    firing_targets[area] = area
+    _evaluate_shooting()
+
+func _on_body_entered_firing_range(body) -> void:
+    assert(body.has("entity_command_type"))
+    firing_targets[body] = body
+    _evaluate_shooting()
+
+func _on_area_exit_firing_range(area) -> void:
+    assert(area.has("entity_command_type"))
+    firing_targets.erase(area)
+    _evaluate_shooting()
+
+func _on_body_exit_firing_range(body) -> void:
+    assert(body.has("entity_command_type"))
+    firing_targets.erase(body)
+    _evaluate_shooting()
+
+func _evaluate_shooting() -> void:
+    for target in firing_targets.keys():
+        if is_instance_valid(target):
+            _handle_shooting(target)
+            return
+        else:
+            firing_targets.erase(target)
+    _handle_not_shooting()
+
+func _handle_shooting(target) -> void:
+    if shooting_target == target:
+        return
+    shooting_target = target
+    shot_start_time = Sc.time.get_scaled_play_time()
+    if get_is_active():
+        clear_command_state()
+    Sc.level.on_worker_idleness_changed(self)
+
+func _handle_not_shooting() -> void:
+    shooting_target = null
+    Sc.level.on_worker_idleness_changed(self)
+
+func get_is_shooting() -> bool:
+    return is_instance_valid(shooting_target)
+
+func _update_shooting() -> void:
+    if !get_is_shooting():
+        return
+    var shot_current_time := Sc.time.get_scaled_play_time()
+    while shot_current_time - shot_start_time > firing_interval:
+        shot_start_time += firing_interval
+        
+        var tower_upgrade_type := UpgradeType.UNKNOWN
+        Sc.level.projectile_controller.shoot_at_target(
+            entity_command_type,
+            upgrade_type,
+            tower_upgrade_type,
+            shooting_target,
+            get_projectile_launch_position())
 
 
 func _walk_to_side_of_base() -> void:
@@ -42,6 +136,8 @@ func _walk_to_side_of_base() -> void:
 func _physics_process(delta: float) -> void:
     if Engine.editor_hint:
         return
+    
+    _update_shooting()
     
     if did_move_last_frame or \
             !is_instance_valid(command):
@@ -294,7 +390,7 @@ func _get_radial_menu_item_types() -> Array:
     var types := [
         CommandType.FRIENDLY_INFO,
     ]
-    match worker_type:
+    match entity_command_type:
         CommandType.SMALL_WORKER:
             types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
         CommandType.MEDIUM_WORKER:

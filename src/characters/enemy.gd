@@ -3,6 +3,8 @@ class_name Enemy
 extends SurfacerCharacter
 
 
+const _FIRING_RANGE_SCENE := preload("res://src/firing_range.tscn")
+
 export var projectile_launch_offset := Vector2.ZERO
 
 var status_overlay: StatusOverlay
@@ -23,6 +25,16 @@ var is_hovered := false
 var is_initial_nav := false
 
 var viewport_position_outline_alpha_multiplier := 0.0
+
+var firing_range: FiringRange
+
+var shooting_target = null
+
+var firing_targets := {}
+
+var firing_interval := INF
+
+var shot_start_time := -1.0
 
 
 func _init(entity_command_type: int) -> void:
@@ -92,7 +104,89 @@ func _ready() -> void:
     navigator.connect("navigation_started", self, "_on_navigation_started")
     navigator.connect("navigation_ended", self, "_on_navigation_ended")
     
+    _set_up_firing_range()
+    
     _go_to_base()
+
+
+func _set_up_firing_range() -> void:
+    firing_range = Sc.utils.add_scene(self, _FIRING_RANGE_SCENE)
+    firing_range.entity_command_type = entity_command_type
+    firing_range.upgrade_type = upgrade_type
+    firing_range.set_up()
+    firing_range.connect("area_entered", self, "_on_area_entered_firing_range")
+    firing_range.connect("body_entered", self, "_on_body_entered_firing_range")
+    firing_range.connect("area_exited", self, "_on_area_exit_firing_range")
+    firing_range.connect("body_exited", self, "_on_body_exit_firing_range")
+    
+    var projectile_type := \
+        Projectile.get_projectile_type_for_command_type(entity_command_type)
+    
+    var tower_upgrade_type := UpgradeType.UNKNOWN
+    firing_interval = ProjectileSpeeds.get_interval(
+        entity_command_type,
+        upgrade_type,
+        tower_upgrade_type)
+
+func _on_area_entered_firing_range(area) -> void:
+    assert(area.has("entity_command_type"))
+    firing_targets[area] = area
+    _evaluate_shooting()
+
+func _on_body_entered_firing_range(body) -> void:
+    assert(body.has("entity_command_type"))
+    firing_targets[body] = body
+    _evaluate_shooting()
+
+func _on_area_exit_firing_range(area) -> void:
+    assert(area.has("entity_command_type"))
+    firing_targets.erase(area)
+    _evaluate_shooting()
+
+func _on_body_exit_firing_range(body) -> void:
+    assert(body.has("entity_command_type"))
+    firing_targets.erase(body)
+    _evaluate_shooting()
+
+func _evaluate_shooting() -> void:
+    for target in firing_targets.keys():
+        if is_instance_valid(target):
+            _handle_shooting(target)
+            return
+        else:
+            firing_targets.erase(target)
+    _handle_not_shooting()
+
+func _handle_shooting(target) -> void:
+    if shooting_target == target:
+        return
+    shooting_target = target
+    shot_start_time = Sc.time.get_scaled_play_time()
+    stop_on_surface()
+
+func _handle_not_shooting() -> void:
+    if !get_is_shooting():
+        return
+    shooting_target = null
+    _go_to_base()
+
+func get_is_shooting() -> bool:
+    return is_instance_valid(shooting_target)
+
+func _update_shooting() -> void:
+    if !get_is_shooting():
+        return
+    var shot_current_time := Sc.time.get_scaled_play_time()
+    while shot_current_time - shot_start_time > firing_interval:
+        shot_start_time += firing_interval
+        
+        var tower_upgrade_type := UpgradeType.UNKNOWN
+        Sc.level.projectile_controller.shoot_at_target(
+            entity_command_type,
+            upgrade_type,
+            tower_upgrade_type,
+            shooting_target,
+            get_projectile_launch_position())
 
 
 func _destroy() -> void:
@@ -269,9 +363,6 @@ func _on_started_colliding(
         target: Node2D,
         layer_names: Array) -> void:
     match layer_names[0]:
-        "friendly_projectile":
-            target._on_collided_with_enemy(self)
-            _on_hit_by_projectile(target)
         _:
             Sc.logger.error("Enemy._on_started_colliding: layer_names=%s" % \
                   str(layer_names))
@@ -417,38 +508,3 @@ func get_projectile_launch_position() -> Vector2:
     return position + \
         projectile_launch_offset * \
         Vector2(surface_state.horizontal_facing_sign, 1.0)
-
-
-func _shoot_at_target(target) -> void:
-    # FIXME: LEFT OFF HERE: ------------------------
-    
-    # FIXME: ----- Check if the target has a velocity and if the horizontal velocity is greater than some threshold; if so, add an offset to the shot
-    
-    var projectile_type := \
-        Projectile.get_projectile_type_for_command_type(entity_command_type)
-    
-    var tower_upgrade_type := UpgradeType.UNKNOWN
-    var start_speed := ProjectileSpeeds.get_speed(
-        entity_command_type,
-        upgrade_type,
-        tower_upgrade_type)
-    
-    var start_position := get_projectile_launch_position()
-    
-    var start_velocity := ThrowUtils.calculate_start_velocity(
-        start_speed,
-        Su.movement.gravity_default,
-        start_position,
-        target)
-    
-    if start_velocity == Vector2.INF:
-        # Target is out of reach, so fall-back to a 45-degree angle to shoot
-        # pretty far toward the target.
-        start_velocity = Vector2.RIGHT.rotated(PI / 4.0)
-        if target.x < start_position.x:
-            start_velocity.x *= -1.0
-    
-    Sc.level.add_projectile(
-        projectile_type,
-        start_position,
-        start_velocity)
