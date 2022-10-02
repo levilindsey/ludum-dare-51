@@ -65,13 +65,12 @@ static func get_projectile_type_for_command_type(command_type: int) -> int:
 
 
 func _on_Area2D_area_entered(area) -> void:
-    assert(area.has("entity_command_type"))
+    assert(area.has_method("get_entity_type"))
     _on_collided(area, area.entity_command_type)
 
 
 func _on_Area2D_body_entered(body) -> void:
-    assert(body.has("character_name"))
-    assert(body.has("entity_command_type"))
+    assert(body.has_method("get_entity_type"))
     _on_collided(body, body.entity_command_type)
 
 

@@ -27,16 +27,14 @@ func _define_extents() -> void:
         upgrade_type,
         tower_upgrade_type)
     
-    var velocity_start_x := cos(_RANGE_TEST_ANGLE) * start_speed
-    var velocity_start_y := -sin(_RANGE_TEST_ANGLE) * start_speed
-    
-    var extent_x := HorizontalMovementUtils \
-        .calculate_max_horizontal_displacement_before_returning_to_starting_height(
-            velocity_start_x,
-            velocity_start_y,
-            INF,
-            Su.movement.gravity_default,
-            Su.movement.gravity_default)
+    var cosA := cos(_RANGE_TEST_ANGLE)
+    var sinA := sin(_RANGE_TEST_ANGLE)
+    var extra_height := 0.0
+    var extent_x := \
+        start_speed * cosA / Su.movement.gravity_default * \
+        (start_speed * sinA + sqrt(
+            start_speed * start_speed * sinA * sinA + \
+            2.0 * Su.movement.gravity_default * extra_height))
     extent_x *= _RANGE_MULTIPLIER
     
     $CollisionShape2D.shape.extents.x = extent_x

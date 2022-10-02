@@ -19,6 +19,8 @@ const _MAX_HIGHLIGHT_VIEWPORT_BOUNDS_RATIO := 0.05
 const SCREEN_RADIUS_INCHES := 0.15
 
 var entity_command_type := CommandType.UNKNOWN
+func get_entity_type() -> int:
+    return entity_command_type
 
 var camera_detector: CameraDetector
 

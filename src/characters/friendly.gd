@@ -16,6 +16,8 @@ export var projectile_launch_offset := Vector2.ZERO
 var status_overlay: StatusOverlay
 
 var entity_command_type := CommandType.UNKNOWN
+func get_entity_type() -> int:
+    return entity_command_type
 
 var _health := 0
 var _health_capacity := 0

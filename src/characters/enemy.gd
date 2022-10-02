@@ -10,6 +10,8 @@ export var projectile_launch_offset := Vector2.ZERO
 var status_overlay: StatusOverlay
 
 var entity_command_type := CommandType.UNKNOWN
+func get_entity_type() -> int:
+    return entity_command_type
 
 var upgrade_type := UpgradeType.UNKNOWN
 
@@ -129,22 +131,22 @@ func _set_up_firing_range() -> void:
         tower_upgrade_type)
 
 func _on_area_entered_firing_range(area) -> void:
-    assert(area.has("entity_command_type"))
+    assert(area.has_method("get_entity_type"))
     firing_targets[area] = area
     _evaluate_shooting()
 
 func _on_body_entered_firing_range(body) -> void:
-    assert(body.has("entity_command_type"))
+    assert(body.has_method("get_entity_type"))
     firing_targets[body] = body
     _evaluate_shooting()
 
 func _on_area_exit_firing_range(area) -> void:
-    assert(area.has("entity_command_type"))
+    assert(area.has_method("get_entity_type"))
     firing_targets.erase(area)
     _evaluate_shooting()
 
 func _on_body_exit_firing_range(body) -> void:
-    assert(body.has("entity_command_type"))
+    assert(body.has_method("get_entity_type"))
     firing_targets.erase(body)
     _evaluate_shooting()
 
