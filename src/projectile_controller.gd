@@ -13,6 +13,7 @@ func _physics_process(delta: float) -> void:
         projectile.position += projectile.velocity * scaled_delta
         projectile.velocity += \
             Vector2(0.0, Su.movement.gravity_default * scaled_delta)
+        projectile.update_rotation_for_velocity()
         
         # Clean-up out-of-bounds projectiles.
         if projectile.position.y > 4000.0:

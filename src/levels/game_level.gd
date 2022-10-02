@@ -746,7 +746,10 @@ func add_projectile(
 
 
 func remove_projectile(projectile: Projectile) -> void:
-    assert(projectiles.has(projectile))
+#    assert(projectiles.has(projectile))
+    if !projectiles.has(projectile):
+        assert(projectile.is_queued_for_deletion())
+        return
     projectiles.erase(projectile)
     projectile_controller.on_projectile_removed(projectile)
     _update_session_counts()

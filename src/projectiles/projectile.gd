@@ -64,6 +64,12 @@ static func get_projectile_type_for_command_type(command_type: int) -> int:
             return UNKNOWN
 
 
+func update_rotation_for_velocity() -> void:
+    if projectile_type != FRIENDLY:
+        return
+    $TextureOutlineableSprite.rotation = velocity.angle()
+
+
 func _on_Area2D_area_entered(area) -> void:
     assert(area.has_method("get_entity_type"))
     _on_collided(area, area.entity_command_type)
@@ -87,7 +93,7 @@ func _on_collided(
         CommandType.LARGE_WORKER, \
         CommandType.ENEMY_SMALL, \
         CommandType.ENEMY_LARGE:
-            target._on_hit_by_projectile(target)
+            target._on_hit_by_projectile(self)
             Sc.level.remove_projectile(self)
         CommandType.BUILDING_ENEMY_SPAWN, \
         CommandType.SMALL_BASE, \
@@ -99,7 +105,7 @@ func _on_collided(
         CommandType.SMALL_FARM, \
         CommandType.MEDIUM_FARM, \
         CommandType.LARGE_FARM:
-            target._on_hit_by_projectile(target)
+            target._on_hit_by_projectile(self)
             Sc.level.remove_projectile(self)
         _:
             Sc.logger.error("Projectile._on_collided: %s" % str(target_type))

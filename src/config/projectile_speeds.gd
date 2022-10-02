@@ -55,6 +55,9 @@ static func get_speed(
     
     var speed: float
     match [entity_type, upgrade_type]:
+        [CommandType.HERO, _]:
+            speed = SPEED_FRIENDLY_MODERATE
+        
         [CommandType.SMALL_WORKER, UpgradeType.MINOR]:
             speed = SPEED_FRIENDLY_MINOR
         [CommandType.SMALL_WORKER, UpgradeType.MODERATE]:
@@ -104,6 +107,9 @@ static func get_interval(
     
     var speed: float
     match [entity_type, upgrade_type]:
+        [CommandType.HERO, _]:
+            speed = INTERVAL_FRIENDLY_MODERATE
+        
         [CommandType.SMALL_WORKER, UpgradeType.MINOR]:
             speed = INTERVAL_FRIENDLY_MINOR
         [CommandType.SMALL_WORKER, UpgradeType.MODERATE]:
