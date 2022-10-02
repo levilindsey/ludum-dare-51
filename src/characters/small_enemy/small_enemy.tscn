@@ -58,6 +58,7 @@ also_optimizes_preselection_path = false
 includes_discrete_trajectory_state = false
 collision_margin_for_edge_calculations = 1.0
 collision_margin_for_waypoint_positions = 4.0
+oblique_collison_normal_aspect_ratio_threshold = 10.0
 
 [node name="SmallEnemyAnimator" parent="." instance=ExtResource( 1 )]
 

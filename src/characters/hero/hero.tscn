@@ -66,6 +66,7 @@ max_jump_chain = 2
 air_edge_weight_multiplier_override = 10.0
 collision_margin_for_edge_calculations = 1.0
 collision_margin_for_waypoint_positions = 4.0
+oblique_collison_normal_aspect_ratio_threshold = 10.0
 
 [node name="HeroAnimator" parent="." instance=ExtResource( 1 )]
 
