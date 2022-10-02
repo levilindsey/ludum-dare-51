@@ -175,16 +175,16 @@ func _start() -> void:
     _follow_camera.target_character = hero
     swap_camera(_follow_camera, false)
     
-    base = Sc.utils.get_child_by_type($Structures, Base)
+    base = Sc.utils.get_child_by_type($Buildings, Base)
     _on_building_created(base, true)
     
     var empty_structures := \
-        Sc.utils.get_children_by_type($Structures, EmptyStructure)
+        Sc.utils.get_children_by_type($Buildings, EmptyStructure)
     for empty_structure in empty_structures:
         _on_building_created(empty_structure, true)
     
     var enemy_spawn_points := \
-        Sc.utils.get_children_by_type($Structures, EnemySpawn)
+        Sc.utils.get_children_by_type($Buildings, EnemySpawn)
     for enemy_spawn_point in enemy_spawn_points:
         _on_building_created(enemy_spawn_point, true)
     
@@ -839,7 +839,7 @@ func on_building_health_depleted(building: Building) -> void:
 #    Sc.annotators.add_transient(
 #        BuildingExplosionAnnotator.new(building.get_center()))
     var is_base := building is Base
-    replace_building(building, CommandType.building_EMPTY)
+    replace_building(building, CommandType.BUILDING_EMPTY)
     if is_base:
         quit(false, false)
 

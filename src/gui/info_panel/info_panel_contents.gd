@@ -18,11 +18,6 @@ func set_up(entity) -> void:
     
     $CommandsLabel \
         .add_color_override("font_color", Sc.palette.get_color("info_panel_header"))
-    $UpgradesLabel \
-        .add_color_override("font_color", Sc.palette.get_color("info_panel_header"))
-    
-    $CommandsSeparator.modulate = Sc.palette.get_color("separator")
-    $UpgradesSeparator.modulate = Sc.palette.get_color("separator")
     
     # Render bulleted description rows.
     var description_lines: Array = \
@@ -66,9 +61,6 @@ func set_up(entity) -> void:
     
     var is_empty_building := entity_command_type == CommandType.BUILDING_EMPTY
     $Status.visible = !is_empty_building
-    $UpgradesSeparator.visible = !is_empty_building
-    $UpgradesLabel.visible = !is_empty_building
-    $Upgrades.visible = !is_empty_building
     
     update()
 

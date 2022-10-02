@@ -60,21 +60,29 @@ func _set_up_firing_range() -> void:
         tower_upgrade_type)
 
 func _on_area_entered_firing_range(area) -> void:
+    if _is_destroyed:
+        return
     assert(area.has_method("get_entity_type"))
     firing_targets[area] = area
     _evaluate_shooting()
 
 func _on_body_entered_firing_range(body) -> void:
+    if _is_destroyed:
+        return
     assert(body.has_method("get_entity_type"))
     firing_targets[body] = body
     _evaluate_shooting()
 
 func _on_area_exit_firing_range(area) -> void:
+    if _is_destroyed:
+        return
     assert(area.has_method("get_entity_type"))
     firing_targets.erase(area)
     _evaluate_shooting()
 
 func _on_body_exit_firing_range(body) -> void:
+    if _is_destroyed:
+        return
     assert(body.has_method("get_entity_type"))
     firing_targets.erase(body)
     _evaluate_shooting()
@@ -135,6 +143,8 @@ func _walk_to_side_of_base() -> void:
 
 func _physics_process(delta: float) -> void:
     if Engine.editor_hint:
+        return
+    if _is_destroyed:
         return
     
     _update_shooting()

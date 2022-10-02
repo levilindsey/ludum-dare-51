@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/gui/info_panel_health_label.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_h_separator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/scaffolder_label.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_s.tres" type="DynamicFont" id=5]
-[ext_resource path="res://addons/scaffolder/assets/fonts/pxlzr_font_xs.tres" type="DynamicFont" id=6]
 [ext_resource path="res://addons/scaffolder/src/gui/widgets/spacer.gd" type="Script" id=7]
 [ext_resource path="res://src/gui/info_panel/info_panel_contents.gd" type="Script" id=8]
 
@@ -67,39 +66,3 @@ margin_right = 1292.0
 margin_bottom = 91.0
 size_flags_horizontal = 3
 custom_constants/separation = 12
-
-[node name="UpgradesSeparator" parent="." instance=ExtResource( 3 )]
-modulate = Color( 0.231373, 0.231373, 0.321569, 1 )
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 107.0
-margin_right = 1292.0
-margin_bottom = 111.0
-size_flags_horizontal = 3
-
-[node name="UpgradesLabel" parent="." instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 127.0
-margin_right = 1292.0
-margin_bottom = 150.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
-text = "Upgrades"
-font_size = "S"
-
-[node name="Upgrades" type="VBoxContainer" parent="."]
-margin_top = 166.0
-margin_right = 1292.0
-margin_bottom = 186.0
-size_flags_horizontal = 3
-custom_constants/separation = 12
-
-[node name="ScaffolderLabel" parent="Upgrades" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1292.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 6 )
-text = "TODO"
-font_size = "Xs"
