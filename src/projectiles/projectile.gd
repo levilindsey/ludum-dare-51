@@ -31,7 +31,7 @@ func _destroy() -> void:
 func _get_damage_for_projectile_type() -> float:
     match projectile_type:
         FRIENDLY:
-            return 50.0
+            return 40.0
         SMALL_ENEMY:
             return 50.0
         LARGE_ENEMY:

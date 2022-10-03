@@ -144,8 +144,11 @@ func _upgrade_building(button_type: int) -> void:
             new_building_type = CommandType.SMALL_TOWER
         CommandType.BUILDING_BASE_SMALL_UPGRADE, \
         CommandType.MEDIUM_BASE:
+            
             assert(entity_command_type == CommandType.SMALL_BASE)
 #            new_building_type = CommandType.MEDIUM_BASE
+            
+            
             Sc.level.session.base_upgrade_count += 1
             
             for collection in [[Sc.level.hero], Sc.level.workers, Sc.level.enemies, Sc.level.buildings]:
@@ -154,6 +157,9 @@ func _upgrade_building(button_type: int) -> void:
                     unit._health *= 1.2
                     unit._health_capacity *= 1.2
             
+            Sc.level.deduct_money(CommandType.COSTS[button_type])
+            
+            return
             
             
         CommandType.BUILDING_BASE_MEDIUM_UPGRADE, \
