@@ -22,9 +22,6 @@ func _ready() -> void:
     $VBoxContainer.rect_min_size.x = Sc.gui.screen_body_width
     
     _on_resized()
-    
-    if Sc.device.get_is_browser_app():
-        Sc.audio.stop_music()
 
 
 func set_params(params) -> void:
@@ -50,7 +47,12 @@ func _on_transition_in_started(previous_screen: Screen) -> void:
 func _on_transition_in_ended(previous_screen: Screen) -> void:
     ._on_transition_in_ended(previous_screen)
     
-    Sc.time.set_timeout(self, "_load_level", 0.05)
+    var delay := 0.05
+#    if Sc.device.get_is_browser_app():
+#        Sc.audio.stop_music()
+#        delay = 2.0
+    
+    Sc.time.set_timeout(self, "_load_level", delay)
 
 
 func _load_level() -> void:

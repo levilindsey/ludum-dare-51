@@ -16,7 +16,7 @@ is_back_button_shown = false
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 282.0
 margin_right = 742.0
-margin_bottom = 463.0
+margin_bottom = 515.0
 rect_min_size = Vector2( 460, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -43,16 +43,18 @@ size = Vector2( 0, 16 )
 [node name="Text" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 160.0
 margin_right = 460.0
-margin_bottom = 229.0
+margin_bottom = 281.0
 
 [node name="ScaffolderLabel" parent="VBoxContainer/Text" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 460.0
-margin_bottom = 49.0
+margin_bottom = 101.0
 rect_min_size = Vector2( 320, 0 )
 custom_fonts/font = ExtResource( 4 )
-text = "You must lead the village the defend against relentless waves of monsters!"
+text = "You must lead the village the defend against relentless waves of monsters!
+
+(Loading can be slow! (maybe 60 seconds?))"
 valign = 0
 autowrap = true
 font_size = "S"
@@ -62,16 +64,16 @@ size_override = Vector2( 320, 0 )
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 230.0
-margin_top = 53.0
+margin_top = 105.0
 margin_right = 230.0
-margin_bottom = 69.0
+margin_bottom = 121.0
 rect_min_size = Vector2( 0, 16 )
 size = Vector2( 0, 16 )
 
 [node name="ClickToContinueMessage" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 245.0
+margin_top = 297.0
 margin_right = 460.0
-margin_bottom = 304.0
+margin_bottom = 356.0
 
 [node name="ScaffolderLabel" parent="VBoxContainer/ClickToContinueMessage" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -93,9 +95,9 @@ size = Vector2( 0, 16 )
 
 [node name="LoadingProgress" type="VBoxContainer" parent="VBoxContainer"]
 margin_left = 70.0
-margin_top = 320.0
+margin_top = 372.0
 margin_right = 390.0
-margin_bottom = 463.0
+margin_bottom = 515.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
