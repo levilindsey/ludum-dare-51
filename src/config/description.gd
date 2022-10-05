@@ -205,7 +205,7 @@ const COMMAND_DESCRIPTIONS := {
         "Builds a farm, which grows cash crops.",
     ],
     BUILDING_BASE_UPGRADE = [
-        "Upgrades your base. A better base allows better worker and structure upgrades.",
+        "Upgrades your base. A better base increases damage and health for your villagers.",
     ],
     BUILDING_TOWER_UPGRADE = [
         "Upgrades this guard tower. A better tower has more health and can shoot further.",

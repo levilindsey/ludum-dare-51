@@ -412,15 +412,15 @@ func _on_radial_menu_closed() -> void:
 func _get_radial_menu_item_types() -> Array:
     var types := [
     ]
-    match entity_command_type:
-#        CommandType.SMALL_WORKER:
-#            types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
-#        CommandType.MEDIUM_WORKER:
-#            types.push_back(CommandType.FRIENDLY_MEDIUM_UPGRADE)
-#        CommandType.LARGE_WORKER:
-#            pass
-        _:
-            Sc.logger.error("Worker._get_common_radial_menu_item_types")
+#    match entity_command_type:
+##        CommandType.SMALL_WORKER:
+##            types.push_back(CommandType.FRIENDLY_SMALL_UPGRADE)
+##        CommandType.MEDIUM_WORKER:
+##            types.push_back(CommandType.FRIENDLY_MEDIUM_UPGRADE)
+##        CommandType.LARGE_WORKER:
+##            pass
+#        _:
+#            Sc.logger.error("Worker._get_common_radial_menu_item_types")
     types.push_back(CommandType.FRIENDLY_INFO)
     return types
 

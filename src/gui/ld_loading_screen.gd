@@ -42,15 +42,17 @@ func _on_transition_in_started(previous_screen: Screen) -> void:
     $VBoxContainer/ClickToContinueMessage.visible = false
     $VBoxContainer/LoadingProgress.visible = true
     self.mouse_default_cursor_shape = CURSOR_ARROW
+    
+    # FIXME: LEFT OFF HERE: ------ Figure out a better way to fix the HTML sound-loop glitch.
+    if Sc.device.get_is_browser_app():
+        Sc.audio.stop_music()
 
 
 func _on_transition_in_ended(previous_screen: Screen) -> void:
     ._on_transition_in_ended(previous_screen)
     
-    var delay := 0.05
-#    if Sc.device.get_is_browser_app():
-#        Sc.audio.stop_music()
-#        delay = 2.0
+    # FIXME: LEFT OFF HERE: ------ Figure out a better way to fix the HTML sound-loop glitch.
+    var delay := 2.0 if Sc.device.get_is_browser_app() else 0.05
     
     Sc.time.set_timeout(self, "_load_level", delay)
 
