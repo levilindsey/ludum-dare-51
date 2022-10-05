@@ -841,6 +841,8 @@ func on_building_health_depleted(building: Building) -> void:
     replace_building(building, CommandType.BUILDING_EMPTY)
     if is_base:
         quit(false, false)
+    elif enemy_spawn_points.empty():
+        quit(true, false)
 
 
 func on_worker_health_depleted(worker: Worker) -> void:

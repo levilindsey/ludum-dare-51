@@ -33,9 +33,9 @@ func _get_damage_for_projectile_type() -> float:
         FRIENDLY:
             return 40.0
         SMALL_ENEMY:
-            return 50.0
+            return 30.0
         LARGE_ENEMY:
-            return 50.0 * 4.0
+            return 30.0 * 3.0
         _:
             Sc.logger.error("Projectile._get_damage_for_projectile_type")
             return INF

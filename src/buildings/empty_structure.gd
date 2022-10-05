@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _get_radial_menu_item_types() -> Array:
     return [
-        CommandType.SMALL_TOWER,
+#        CommandType.SMALL_TOWER,
 #        CommandType.SMALL_FARM,
         CommandType.BUILDING_INFO,
     ]
