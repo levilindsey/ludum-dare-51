@@ -1,34 +1,37 @@
 # Ludum Dare 51
 
-> TODO: Add a cover image.
+<p align="center">
+  <img src="assets/images/logos/cover.png"
+       alt="Cover art.">
+</p>
+
 
 > _**[Play the game!](https://levi.dev/ludum-dare-51)**_
+> 
+> _**[Watch a gameplay video!](https://www.youtube.com/watch?v=Ix7IdaGE3AA)**_
 
-_TODO: Game plot description / call-to-action_
 
-TODO: Game technical description
+_🏹 Lead the village the defend against relentless waves of monsters!_
 
-TODO: Search/replace all instances of bootstrap with the app name.
 
-## 👨‍💻 The jam
+## ‍👨‍💻 The jam
 
-Ludum Dare is a semi-annual event where people create a game over the weekend. Ludum Dare is a ranked competition, with a clever voting system that gets more eyes on your game when you in turn rate other games. There are two tracks you can participate in:
+[Ludum Dare](https://ldjam.com/events/ludum-dare/51/) is a semi-annual event where people create a game over the weekend.
+-   It is a ranked competition, with a clever voting system that gets more eyes on your game when you in turn rate other games.
+-   There are a few different tracks you can participate in; I usually do the more-challenging "**Compo**" track, where you must create all your own art, music, sounds, etc. from scratch, work by yourself, and finish within **48 hours**.
+-   The games all follow some central theme, which is only announced at the start of the jam.
 
--   In the "**Compo**" track, you must create all your own art, music, sounds, etc. from scratch, work by yourself, and finish within 48 hours.
--   In the "**Jam**" track, you can work with a team, you can use art, code, music, sounds, etc. that already existed or was created by someone else, and you get 72 hours to finish.
+I worked solo and created everything during the event (the Compo track). Except of course for my frameworks (which is fine, you're allowed to use pre-existing code).
 
-Additionally, the games all follow some central theme, which is only announced at the start of the jam.
-
-I worked solo and created everything during the event. Except of course for my Scaffolder and Surfacer frameworks (which is fine, you're allowed to use pre-existing code).
 
 ### 💡 The theme
 
-> TODO: Describe the theme and how my game fits it.
+"Every 10 seconds"
+
 
 ## 💿 Software used
 
 -   **[Godot](https://godotengine.org/):** Game engine.
--   **[Piskel](https://www.piskelapp.com/user/5663844106502144):** Pixel-art image editor.
 -   **[Aseprite](https://www.aseprite.org/):** Pixel-art image editor.
 -   **[Bfxr](https://www.bfxr.net/):** Sound effects editor.
 -   **[FamiStudio](https://famistudio.org/):** Chiptune music tracker.
@@ -36,11 +39,13 @@ I worked solo and created everything during the event. Except of course for my S
 -   **[Scaffolder](https://godotengine.org/asset-library/asset/969):** Framework for general app and UI infrastructure.
 -   **[SurfaceTiler](https://github.com/SnoringCatGames/surface_tiler):** Framework for "next-level" autotiling.
 
+
 ## ⚙️ Getting set up
 
 > **NOTE:** This repo uses [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to include frameworks.
 
 To learn more about how the code works, checkout the [Surfacer](https://github.com/SnoringCatGames/surfacer/) and [Scaffolder](https://github.com/SnoringCatGames/scaffolder/) READMEs.
+
 
 ## 📃 Licenses
 
@@ -51,9 +56,7 @@ To learn more about how the code works, checkout the [Surfacer](https://github.c
     -   [addons/surfacer/src/config/surfacer_third_party_licenses.gd](https://github.com/SnoringCatGames/surfacer/blob/master/src/config/surfacer_third_party_licenses.gd)
     -   [src/config/third_party_licenses.gd](./src/config/third_party_licenses.gd)
 
-> TODO: Add a loading GIF.
-
 <p align="center">
-  <img src="assets/images/gui/loading.gif"
+  <img src="assets/images/characters/worker_standing_256.gif"
        alt="An animated GIF.">
 </p>
